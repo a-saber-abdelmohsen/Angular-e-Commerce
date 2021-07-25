@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import {FormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { BrandComponent } from './Admin/brand/brand/brand.component';
 import { HeighSaledPRoductListComponent } from './heigh-saled-product-list/heigh-saled-product-list.component';
 import { HomePageComponent } from './home-page/home-page.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,12 +28,15 @@ import { HomePageComponent } from './home-page/home-page.component';
     ProductListComponent,
     BrandComponent,
     HeighSaledPRoductListComponent,
-    HomePageComponent
+    HomePageComponent,
+    BrandComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     TooltipModule.forRoot()
   ],
   providers: [],
