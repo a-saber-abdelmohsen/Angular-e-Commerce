@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/Shared/Product';
+import { Rating } from 'src/app/Shared/Rating';
 
 @Component({
   selector: 'app-product',
@@ -14,4 +15,16 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  GetAvgRating(ratings: Rating[]): Number
+  {
+    let sum = 0;
+    if(ratings==null || ratings.length == 0)
+      return sum;
+
+    ratings.forEach(rate => {
+      sum += rate.Rate;
+    });
+
+    return sum/ratings.length
+  }
 }

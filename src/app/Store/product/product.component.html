@@ -3,20 +3,20 @@
     <div class="product-img">
         <img src="http://localhost:9602/Content/Imgs/Products/{{product.Photo}}" alt="">
         <div class="product-label">
-            <span class="sale">-30%</span>
+            <span class="sale">-{{(product.Price-product.Offer_Price)/product.Price*100 | number: '1.0-0'}}%</span>
             <span class="new">NEW</span>
         </div>
     </div>
     <div class="product-body">
-        <p class="product-category">Category</p>
+        <p class="product-category">{{product.Sub_Category.Name}}</p>
         <h3 class="product-name"><a href="#">{{product.Name}}</a></h3>
         <h4 class="product-price">${{product.Offer_Price}}  <del class="product-old-price">${{product.Price}}</del></h4>
         <div class="product-rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
+            <i class="fa fa-star" [class.colorRateStar]="GetAvgRating(product.Ratings) > 1"></i>
+            <i class="fa fa-star" [class.colorRateStar]="GetAvgRating(product.Ratings) > 2"></i>
+            <i class="fa fa-star" [class.colorRateStar]="GetAvgRating(product.Ratings) > 3"></i>
+            <i class="fa fa-star" [class.colorRateStar]="GetAvgRating(product.Ratings) > 4"></i>
+            <i class="fa fa-star" [class.colorRateStar]="GetAvgRating(product.Ratings) > 4.5"></i>
         </div>
         <div class="product-btns">
             <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>

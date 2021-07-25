@@ -1,6 +1,6 @@
 export class Rating {
     constructor(
-        public Id: number,
+        public Rate: number,
         public Comment: string,
         public Created_at: Date,
         public User_Id: string,
