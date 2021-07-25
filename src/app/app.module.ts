@@ -13,6 +13,9 @@ import { StoreComponent } from './Store/store/store.component';
 import { ProductComponent } from './Store/product/product.component';
 import { ProductListComponent } from './Store/product-list/product-list.component';
 import { BrandComponent } from './Admin/brand/brand/brand.component';
+import { HeighSaledPRoductListComponent } from './heigh-saled-product-list/heigh-saled-product-list.component';
+import { HomePageComponent } from './home-page/home-page.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +26,11 @@ import { BrandComponent } from './Admin/brand/brand/brand.component';
     StoreComponent,
     ProductComponent,
     ProductListComponent,
+    BrandComponent,
+    HeighSaledPRoductListComponent,
+    HomePageComponent,
     BrandComponent
+    
   ],
   imports: [
     BrowserModule,
