@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService } from '../Services/product.service';
 import { SubCategoryNavBarService } from '../Services/sub-category-nav-bar.service';
+import { WishlistService } from '../Services/wishlist.service';
 import { SubCategoryForVanBar } from '../Shared/SubCategoryForNavBar';
 
 @Component({
@@ -16,19 +17,40 @@ export class HeaderComponent implements OnInit {
 
   subId: number = 0;
   searchTerm: string = "";
-
+  wishListCount=0
+//userid=localStorage.getItem("UserId");
+userid="123"
   constructor(
     private _subCatService: SubCategoryNavBarService,
-    private _productService: ProductService,
-    private _router: Router
+    private _productService: ProductService,private _wishListService:WishlistService
+    ,private _router: Router
   ) { }
 
   ngOnInit(): void {
+    
     this._subCatService.GetSubWithChild().subscribe(d => this.subCats = d);
+  
+    if(this.userid!=null){
+     
+     
+      this._wishListService.GetWishListForThisUser(this.userid).subscribe(data=>{this.wishListCount=data.length});
+      this._wishListService.currentMessage.subscribe(message => {
+
+        this._wishListService.GetWishListForThisUser(this.userid!).subscribe(data=>{this.wishListCount=data.length});
+  
+      })
+    }
+   
   }
 
   Search(): void {
     let url = "/search/"+this.subId+"/"+this.searchTerm;
     this._router.navigate([url]);
+  }
+  GoToProduct(VendorID:string){
+    
+      this._router.navigate(['/productList',{userWishID:VendorID}])
+     
+    
   }
 }

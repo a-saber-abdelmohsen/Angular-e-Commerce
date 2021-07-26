@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { BrandService } from 'src/app/Services/brand.service';
 import { ProductService } from 'src/app/Services/product.service';
+import { WishlistService } from 'src/app/Services/wishlist.service';
 import { Brand } from 'src/app/Shared/Brand';
 import { Product } from 'src/app/Shared/Product';
 
@@ -21,7 +22,7 @@ export class ProductListComponent implements OnInit {
   constructor(
     private _productService: ProductService,
     private actvRout:ActivatedRoute,
-    private _brandService: BrandService
+    private _brandService: BrandService,private _wishListService:WishlistService
   ) { }
 
   ngOnInit(): void {
@@ -39,6 +40,12 @@ export class ProductListComponent implements OnInit {
       else if(params.get('id') != null){
         let id: string = params.get('id')!;
         this._productService.GetProductsByStore(id).subscribe(d => {this.products = d; });
+       
+      }
+      else if(params.get('userWishID') != null){
+        let id: string = params.get('userWishID')!;
+        this._wishListService.GetWishListProductForThisUser(id).subscribe(d => {this.products = d; });
+     
       }
       else{
         this.Subid=0;
