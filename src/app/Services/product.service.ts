@@ -17,4 +17,8 @@ export class ProductService {
     GetProducts(): Observable<Product[]>{
       return this._http.get<Product[]>(this.BaseURL);
     }
+    GetProductsBySubCategory(Subid:number): Observable<Product[]>{
+      return this._http.get<Product[]>("http://localhost:9602/api/product?Subid="+Subid);
+    }
+    
 }
