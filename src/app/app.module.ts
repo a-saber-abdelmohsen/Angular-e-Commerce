@@ -13,11 +13,13 @@ import { StoreComponent } from './Store/store/store.component';
 import { ProductComponent } from './Store/product/product.component';
 import { ProductListComponent } from './Store/product-list/product-list.component';
 import { DetailsComponent } from './details/details.component';
-import { BrandComponent } from './Admin/brand/brand.component';
+import { BrandComponent } from './Admin/brand/Index/brand.component';
 import { HeighSaledPRoductListComponent } from './heigh-saled-product-list/heigh-saled-product-list.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CartDetailsComponent } from './cart-details/cart-details.component';
 import { WishlistDetailsComponent } from './wishlist-details/wishlist-details.component';
+import { AddBrandComponent } from './Admin/brand/add-brand/add-brand.component';
+import { EditBrandComponent } from './Admin/brand/edit-brand/edit-brand.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { WishlistDetailsComponent } from './wishlist-details/wishlist-details.co
     HomePageComponent,
     BrandComponent,
     CartDetailsComponent,
-    WishlistDetailsComponent
+    WishlistDetailsComponent,
+    AddBrandComponent,
+    EditBrandComponent
     
   ],
   imports: [
