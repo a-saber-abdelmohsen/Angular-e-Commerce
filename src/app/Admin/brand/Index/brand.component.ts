@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BrandService} from 'src/app/Services/brand.service';
 import { Brand } from 'src/app/Shared/Brand';
 import {HttpClient} from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-brand',
@@ -11,8 +12,8 @@ import {HttpClient} from '@angular/common/http';
 export class BrandComponent implements OnInit {
 
   brands:Brand[]=[];
-  url:string="http://localhost:9602/api/brand";
-  constructor(private _brandService:BrandService, private _http:HttpClient) { }
+ 
+  constructor(private _brandService:BrandService, private router:Router) { }
 
   ngOnInit(): void {
     this._brandService.GetAllBrand().subscribe((data)=>{
@@ -20,10 +21,16 @@ export class BrandComponent implements OnInit {
       console.log(data);
     })
   }
-  
-  onSubmit(data: any)
+
+  deletebrand(id: any)
   {
-    this._http.post(this.url,data).subscribe((result)=>{console.warn("result",result)});
-    console.warn(data);
+    console.warn(id);
+  this._brandService.DeleteBrand(id).subscribe(data=>{
+   this.brands=this.brands.filter(item=>item.Id !=id);
+    console.log(data)
+
+  });
   }
+  
+ 
 }

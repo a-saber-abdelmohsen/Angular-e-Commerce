@@ -1,0 +1,26 @@
+<h2>Edit Brand</h2>
+<div class="container">
+    <form #userPost="ngForm"  >
+
+        
+            <div class="form-group">
+                <label>brand Name</label>
+                <input name="Name" required type="text"  class="form-control" formControlName="Name" />
+
+            </div>
+            <br>
+            <div id="imageContainer" class="rounded-circle">
+                <input type="text" name="Photo" id="Photo" formControlName="Photo" accept="image/png, image/jpeg, image/jpg"
+                    class="form-control" />
+
+            </div>
+        
+        <br>
+        <input type="submit" class="btn btn-primary" value="Add Brand">
+
+
+
+    </form>
+
+
+</div>
