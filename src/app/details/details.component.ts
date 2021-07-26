@@ -46,7 +46,7 @@ export class DetailsComponent implements OnInit {
   onSubmit()
 {
 //console.log(this.userModel);
-    alert("inside");
+    //alert("inside");
     this.ratingModel.Product_Id=this.productdetails.Id;
     this._productdetailsService.enroll(this.ratingModel).
     subscribe(
