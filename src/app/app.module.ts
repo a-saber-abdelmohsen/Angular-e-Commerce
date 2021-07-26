@@ -16,6 +16,8 @@ import { DetailsComponent } from './details/details.component';
 import { BrandComponent } from './Admin/brand/brand.component';
 import { HeighSaledPRoductListComponent } from './heigh-saled-product-list/heigh-saled-product-list.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { CartDetailsComponent } from './cart-details/cart-details.component';
+import { WishlistDetailsComponent } from './wishlist-details/wishlist-details.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { HomePageComponent } from './home-page/home-page.component';
     DetailsComponent,
     HeighSaledPRoductListComponent,
     HomePageComponent,
-    BrandComponent
+    BrandComponent,
+    CartDetailsComponent,
+    WishlistDetailsComponent
     
   ],
   imports: [

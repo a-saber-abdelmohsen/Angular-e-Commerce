@@ -9,6 +9,7 @@ import { Product } from '../Shared/Product';
 export class ProductService {
 
   BaseURL: string = "http://localhost:9602/api/product";
+
   constructor(
     private _http: HttpClient
   ) { }
@@ -20,5 +21,11 @@ export class ProductService {
     GetProductsBySubCategory(Subid:number): Observable<Product[]>{
       return this._http.get<Product[]>("http://localhost:9602/api/product?Subid="+Subid);
     }
-    
+    GetProductsByStore(id: string): Observable<Product[]>{
+      return this._http.get<Product[]>("http://localhost:9602/api/product/store?id="+id);
+    }
+
+    SearchProducts(term: string, subid: number): Observable<Product[]>{
+      return this._http.get<Product[]>("http://localhost:9602/api/product/search?SubCatId="+subid+"&SearchText="+term);
+    }
 }
