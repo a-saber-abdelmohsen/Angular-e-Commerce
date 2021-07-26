@@ -1,23 +1,18 @@
 
   <h2>Add New Brand</h2>
 <div class="container">
-    <form #userPost="ngForm" novalidate (ngSubmit)="onSubmit(userPost.value)" >
+    <form #brandForm="ngForm" novalidate (ngSubmit)="onSubmit(brandForm.value)" id="imageForm" >
    
+        <div id="imageContainer">
+            <input type="file" name="imageFile" id="imageFile" ngModel accept="image/png, image/jpeg, image/jpg" class="form-control" (change)="UploadImage()" />
+            <img src="http://localhost:9602/Content/Imgs/default.jpg" id="img" class="h-100 w-100" />
+        </div>
 
         <div class="form-group">
             <label>brand Name</label>
             <input name="Name" required  type="text" ngModel  class="form-control" />
-
         </div>
-        <br>
-        <div id="imageContainer" class="rounded-circle">
-            <input type="text" name="Photo" id="Photo" accept="image/png, image/jpeg, image/jpg" class="form-control"  />
-            
-        </div>
-        <br>
         <input type="submit"class="btn btn-primary" value="Add Brand">
-
-
       
     </form>
 

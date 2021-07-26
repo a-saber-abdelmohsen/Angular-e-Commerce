@@ -17,20 +17,19 @@ const routes: Routes = [
   { path: 'homePage', component: HomePageComponent },
   { path: 'Cart', component: CartDetailsComponent },
   { path: 'wishlist', component: WishlistDetailsComponent },
-    //Brad Path
-    { path: 'brand', component: BrandComponent 
- },
-      {path:'brand/Add',component:AddBrandComponent},
-      {path:'brand/Edit/:id',component:EditBrandComponent},
- 
+  //Brad Path
+  { path: 'brand', component: BrandComponent },
+  { path: 'brand/Add', component: AddBrandComponent },
+  { path: 'brand/Edit/:id', component: EditBrandComponent },
+
   { path: '', redirectTo: '/homePage', pathMatch: 'full' },
   { path: '**', redirectTo: '/homePage', pathMatch: 'full' },
-
- 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
+  imports: [
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
