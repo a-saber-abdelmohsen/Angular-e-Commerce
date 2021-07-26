@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/Shared/Product';
 import { Rating } from 'src/app/Shared/Rating';
 
@@ -10,7 +11,9 @@ import { Rating } from 'src/app/Shared/Rating';
 export class ProductComponent implements OnInit {
 
   @Input() product!: Product;
-  constructor() { }
+  constructor(
+    private _router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -26,5 +29,11 @@ export class ProductComponent implements OnInit {
     });
 
     return sum/ratings.length
+  }
+
+  
+  GoToDetails(): void{
+    let url = "/details/"+this.product.Id;
+    this._router.navigate([url]);
   }
 }
