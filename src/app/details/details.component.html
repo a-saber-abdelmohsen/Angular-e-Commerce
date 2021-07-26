@@ -181,7 +181,7 @@
                                                     <i class="fa fa-star-o"></i>
                                                 </div>
                                                 <div class="rating-progress">
-                                                    <div style="width: '{{productdetails.RatingDetail.rat3pres}}%';"></div>
+                                                    <div style="width: {{productdetails.RatingDetail.rat3pres}}%;"></div>
                                                 </div>
                                                 <span class="sum">{{productdetails.RatingDetail.rat3}}</span>
                                             </li>
@@ -236,8 +236,6 @@
                                                         <p width="15%">{{rating.Comment}}</p>
                                                     </div>
                                                 </li>
-                                            }
-
                                         </ul>
                                         <!--<ul class="reviews-pagination">
                                             <li class="active">1</li>
@@ -249,26 +247,28 @@
                                     </div>
                                 </div>
                                 <!-- /Reviews -->
-                                <!-- Review Form -->
+                                <!-- Review Form action="/auproduct/AddRate"-->
                                 <div class="col-md-3">
                                     <div id="review-form">
-                                        <form class="review-form" method="post" action="/uproduct/AddRate">
-                                            <input type="hidden" name="Product_Id" value="@Model.product.Id">
-                                            <input class="input" type="text" placeholder="Your Name">
-                                            <input class="input" type="email" placeholder="Your Email">
-                                            <textarea class="input" name="Comment" placeholder="Your Review"></textarea>
+                                        <form class="review-form" method="post" #userForm="ngForm" novalidate (ngSubmit)="onSubmit()">
+                                            <input type="hidden" name="Product_Id" value="{{productdetails.Id}}"  [(ngModel)]="ratingModel.Product_Id">
+                                            <input type="hidden" name="User_Id" value="Khaled Ahmed"  [(ngModel)]="ratingModel.User_Id">
+                                            <input class="input" type="text" name="Username" placeholder="Your Name"  [(ngModel)]="ratingModel.Username">
+                                            <input class="input" type="email" name="email" [(ngModel)]="email" placeholder="Your Email">
+                                            <textarea class="input" name="Comment" [(ngModel)]="ratingModel.Comment" placeholder="Your Review"></textarea>
                                             <div class="input-rating">
                                                 <span>Your Rating: </span>
                                                 <div class="stars">
-                                                    <input id="star5" name="Rate" value="5" type="radio"><label for="star5"></label>
-                                                    <input id="star4" name="Rate" value="4" type="radio"><label for="star4"></label>
-                                                    <input id="star3" name="Rate" value="3" type="radio"><label for="star3"></label>
-                                                    <input id="star2" name="Rate" value="2" type="radio"><label for="star2"></label>
-                                                    <input id="star1" name="Rate" value="1" type="radio"><label for="star1"></label>
+                                                    <input id="star5" name="Rate" [(ngModel)]="ratingModel.Rate" value="5" type="radio" required><label for="star5"></label>
+                                                    <input id="star4" name="Rate" [(ngModel)]="ratingModel.Rate" value="4" type="radio" required><label for="star4"></label>
+                                                    <input id="star3" name="Rate" [(ngModel)]="ratingModel.Rate" value="3" type="radio" required><label for="star3"></label>
+                                                    <input id="star2" name="Rate" [(ngModel)]="ratingModel.Rate" value="2" type="radio" required><label for="star2"></label>
+                                                    <input id="star1" name="Rate" [(ngModel)]="ratingModel.Rate" value="1" type="radio" required><label for="star1"></label>
                                                 </div>
                                             </div>
-                                            <button class="primary-btn">Submit</button>
+                                            <button class="primary-btn" type="submit">Submit</button>
                                         </form>
+                                        <small class="text-danger" >{{error}}</small>
                                     </div>
                                 </div>
                                 <!-- /Review Form -->
@@ -300,15 +300,39 @@
             </div>
 
             <!-- product -->
-            <!--@foreach (var product in Model.products)
-            {
-                <div class="col-md-3 col-xs-6">
-                    @{
-                        Html.RenderAction("ProductPatialView", "MainSite", product);
-                    }
-
+          
+            <div class="col-md-3 col-xs-6">
+                <div class="product" *ngFor="let product of productdetails.RelatedProducts">
+                    <div class="product-img">
+                        <img src="http://localhost:9602/Content/Imgs/Products/{{product.Photo}}" alt="">
+                        <div class="product-label">
+                            <span class="sale">{{-1*(product.Price-product.Offer_Price)/product.Price*100 | number: '1.0-0'}}%</span>
+                            <span class="new">NEW</span>
+                        </div>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-category">{{product.Sub_Category.Name}}</p>
+                        <h3 class="product-name"><a href="#">{{product.Name}}</a></h3>
+                        <h4 class="product-price">${{product.Offer_Price}} <del class="product-old-price">${{product.Price}}</del></h4>
+                        <div class="product-rating">
+                            <i class="fa fa-star" [class.colorRateStar]="GetAvgRating(product.Ratings) >= 1"></i>
+                            <i class="fa fa-star" [class.colorRateStar]="GetAvgRating(product.Ratings) >= 2"></i>
+                            <i class="fa fa-star" [class.colorRateStar]="GetAvgRating(product.Ratings) >= 3"></i>
+                            <i class="fa fa-star" [class.colorRateStar]="GetAvgRating(product.Ratings) >= 4"></i>
+                            <i class="fa fa-star" [class.colorRateStar]="GetAvgRating(product.Ratings) > 4.5"></i>
+                        </div>
+                        <div class="product-btns">
+                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                            <!-- <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button> -->
+                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">view</span></button>
+                        </div>
+                    </div>
+                    <div class="add-to-cart">
+                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                    </div>
                 </div>
-            }-->
+            </div>
+          
 
 
         </div>
