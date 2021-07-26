@@ -27,13 +27,16 @@
                     <h2 class="product-name">{{productdetails.Name}}</h2>
                     <div>
                         <div class="product-rating">
-                                <i class="fa fa-star" *ngFor="let in of counter(productdetails.RatingDetail.aveg) ;let i = index"></i>
-                                <i class="fa fa-star-o" *ngFor="let in of counter(5-productdetails.RatingDetail.aveg) ;let i = index"></i>
+                            <i class="fa fa-star" [class.colorRateStar]="productdetails.RatingDetail.aveg >= 1"></i>
+                            <i class="fa fa-star" [class.colorRateStar]="productdetails.RatingDetail.aveg >= 2"></i>
+                            <i class="fa fa-star" [class.colorRateStar]="productdetails.RatingDetail.aveg >= 3"></i>
+                            <i class="fa fa-star" [class.colorRateStar]="productdetails.RatingDetail.aveg >= 4"></i>
+                            <i class="fa fa-star" [class.colorRateStar]="productdetails.RatingDetail.aveg > 4.5"></i>
                         </div>
                         <a class="review-link" href="#">{{productdetails.RatingDetail.count}}} Review(s) | Add your review</a>
                     </div>
                     <div>
-                        <h3 class="product-price">${{productdetails..Offer_Price}} <del class="product-old-price">${{productdetails.Price}}</del></h3>
+                        <h3 class="product-price">${{productdetails.Offer_Price}} <del class="product-old-price">${{productdetails.Price}}</del></h3>
                         <span class="product-available">In Stock</span>
                     </div>
                     <p>
@@ -63,9 +66,9 @@
                                 <input type="number">-->
                                 <!--<span class="qty-up">+</span>
                                 <span class="qty-down">-</span>-->
-                            <!--</div>
+                            <!--</div> click="addToCart({{productdetails.Id}})
                         </div>-->
-                        <button class="add-to-cart-btn" click="addToCart({{productdetails.Id}})"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                        <button class="add-to-cart-btn" ><i class="fa fa-shopping-cart"></i> add to cart</button>
                     </div>
 
                     <!--<ul class="product-btns">
@@ -119,9 +122,9 @@
                                 <div class="col-md-12">
                                     <p>Vendor : {{productdetails.Vendor_Name}}</p>
                                     <p> Reviews for {{productdetails.Name}}: ({{productdetails.RatingDetail.count}}) Review(s)</p>
-                                    <p>Price : productdetails.Price | Offer price : productdetails.Offer_Price </p>
-                                    <p>Sell Count: productdetails.Sell_Count</p>
-                                    <p>Product Rate According to Customers : productdetails.RatingDetail.pres</p>
+                                    <p>Price : {{productdetails.Price}} | Offer price : {{productdetails.Offer_Price}} </p>
+                                    <p>Sell Count: {{productdetails.Sell_Count}}</p>
+                                    <p>Product Rate According to Customers : {{productdetails.RatingDetail.pres}}</p>
                                 </div>
                             </div>
                         </div>
@@ -133,17 +136,13 @@
                                 <div class="col-md-3">
                                     <div id="rating">
                                         <div class="rating-avg">
-                                            <span>productdetails.RatingDetail.aveg</span>
+                                            <span>{{productdetails.RatingDetail.aveg}}</span>
                                             <div class="rating-stars">
-                                                @for (int i = 1; i <= ViewBag.aveg; i++)
-                                                {
-                                                    <i class="fa fa-star"></i>
-                                                }
-                                                @for (int j = 1; j <= 5 - ViewBag.aveg; j++)
-                                                {
-
-                                                    <i class="fa fa-star-o"></i>
-                                                }
+                                                <i class="fa fa-star" [class.colorRateStar]="productdetails.RatingDetail.aveg >= 1"></i>
+                                                <i class="fa fa-star" [class.colorRateStar]="productdetails.RatingDetail.aveg >= 2"></i>
+                                                <i class="fa fa-star" [class.colorRateStar]="productdetails.RatingDetail.aveg >= 3"></i>
+                                                <i class="fa fa-star" [class.colorRateStar]="productdetails.RatingDetail.aveg >= 4"></i>
+                                                <i class="fa fa-star" [class.colorRateStar]="productdetails.RatingDetail.aveg > 4.5"></i>
                                             </div>
                                         </div>
                                         <ul class="rating">
@@ -156,9 +155,9 @@
                                                     <i class="fa fa-star"></i>
                                                 </div>
                                                 <div class="rating-progress">
-                                                    <div style="width: '{{productdetails.RatingDetail.rat5pres%}}'"></div>
+                                                    <div style="width:{{productdetails.RatingDetail.rat5pres}}%"></div>
                                                 </div>
-                                                <span class="sum">productdetails.RatingDetail.rat5</span>
+                                                <span class="sum">{{productdetails.RatingDetail.rat5}}</span>
                                             </li>
                                             <li>
                                                 <div class="rating-stars">
@@ -169,9 +168,9 @@
                                                     <i class="fa fa-star-o"></i>
                                                 </div>
                                                 <div class="rating-progress">
-                                                    <div style="width: '{{productdetails.RatingDetail.rat4pres%}}';"></div>
+                                                    <div style="width:{{productdetails.RatingDetail.rat4pres}}%;"></div>
                                                 </div>
-                                                <span class="sum">productdetails.RatingDetail.rat4</span>
+                                                <span class="sum">{{productdetails.RatingDetail.rat4}}</span>
                                             </li>
                                             <li>
                                                 <div class="rating-stars">
@@ -182,9 +181,9 @@
                                                     <i class="fa fa-star-o"></i>
                                                 </div>
                                                 <div class="rating-progress">
-                                                    <div style="width: '{{productdetails.RatingDetail.rat3pres%}}';"></div>
+                                                    <div style="width: '{{productdetails.RatingDetail.rat3pres}}%';"></div>
                                                 </div>
-                                                <span class="sum">productdetails.RatingDetail.rat3</span>
+                                                <span class="sum">{{productdetails.RatingDetail.rat3}}</span>
                                             </li>
                                             <li>
                                                 <div class="rating-stars">
@@ -195,9 +194,9 @@
                                                     <i class="fa fa-star-o"></i>
                                                 </div>
                                                 <div class="rating-progress">
-                                                    <div style="width: '{{productdetails.RatingDetail.rat2pres%}}';"></div>
+                                                    <div style="width:{{productdetails.RatingDetail.rat2pres}}%;"></div>
                                                 </div>
-                                                <span class="sum">productdetails.RatingDetail.rat2</span>
+                                                <span class="sum">{{productdetails.RatingDetail.rat2}}</span>
                                             </li>
                                             <li>
                                                 <div class="rating-stars">
@@ -208,9 +207,9 @@
                                                     <i class="fa fa-star-o"></i>
                                                 </div>
                                                 <div class="rating-progress">
-                                                    <div style="width: '{{productdetails.RatingDetail.rat1pres%}}';"></div>
+                                                    <div style="width: {{productdetails.RatingDetail.rat1pres}}%;"></div>
                                                 </div>
-                                                <span class="sum">productdetails.RatingDetail.rat1</span>
+                                                <span class="sum">{{productdetails.RatingDetail.rat1}}</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -220,27 +219,21 @@
                                 <div class="col-md-6">
                                     <div id="reviews">
                                         <ul class="reviews">
-                                            @foreach (var rating in ViewBag.RatingProd)
-                                            {
+                                          
                                                 <li *ngFor="let rating of productdetails.Ratings">
                                                     <div class="review-heading">
-                                                        <h5 class="name">@rating.User.UserName</h5>
-                                                        <p class="date">@rating.Created_at</p>
+                                                        <h5 class="name">{{rating.Username}}</h5>
+                                                        <p class="date">{{rating.Created_at}}</p>
                                                         <div class="review-rating">
-
-                                                            @for (int i = 1; i <= rating.Rate; i++)
-                                                            {
-                                                                <i class="fa fa-star"></i>
-                                                            }
-                                                            @for (int j = 1; j <= 5 - rating.Rate; j++)
-                                                            {
-                                                                <i class="fa fa-star-o empty"></i>
-                                                            }
-
+                                                            <i class="fa fa-star" [class.colorRateStar]="rating.Rate >= 1"></i>
+                                                            <i class="fa fa-star" [class.colorRateStar]="rating.Rate >= 2"></i>
+                                                            <i class="fa fa-star" [class.colorRateStar]="rating.Rate >= 3"></i>
+                                                            <i class="fa fa-star" [class.colorRateStar]="rating.Rate >= 4"></i>
+                                                            <i class="fa fa-star" [class.colorRateStar]="rating.Rate > 4.5"></i>
                                                         </div>
                                                     </div>
                                                     <div class="review-body">
-                                                        <p width="15%">@rating.Comment</p>
+                                                        <p width="15%">{{rating.Comment}}</p>
                                                     </div>
                                                 </li>
                                             }
@@ -325,71 +318,4 @@
 </div>
 <!-- /Section -->
 
-    <script>
-        function fun(elem) {
-
-            if (elem.children[1].children[0].classList.contains("fa-heart")) {
-
-                $.ajax(
-                    {
-                        type: 'post', //HTTP POST Method
-                        url: "/WishList/Delete", // Controller/View
-                        data: { //Passing data
-                            Product_Id: elem.children[0].getAttribute("data-id") //Reading text box values using Jquery
-
-                        }
-                        , success: function (result) {
-                            $el = elem.children[0]
-                            //$("#btnSave").attr("class", "textboxRight");
-                            //    $(elem.children[0]).find('i').removeClass("fa-heart")
-                            elem.children[1].children[0].classList.remove("fa-heart")
-                            elem.children[1].children[0].classList.add("fa-heart-o")
-                            let number = parseInt(document.getElementById('wish').textContent);
-                            number--;
-                            document.getElementById('wish').textContent = number;
-
-
-
-                        }
-                        , error: function (result) {
-                            console.log(result);
-                        }
-
-                    });
-            } else {
-
-                $.ajax(
-                    {
-                        type: 'post', //HTTP POST Method
-                        url: "/WishList/CreateWishList", // Controller/View
-                        data: { //Passing data
-                            Product_Id: elem.children[0].getAttribute("data-id") //Reading text box values using Jquery
-
-                        }
-                        , success: function (result) {
-                            if (result === "Register First") {
-                                $("#myModal").modal('show');
-                            } else {
-                                //  $(elem.children[0]).find('i').removeClass("fa-heart-o")
-                                //  $(elem.children[0]).find('i').addClass("fa-heart")
-                                elem.children[1].children[0].classList.remove("fa-heart-o")
-                                elem.children[1].children[0].classList.add("fa-heart")
-
-                                let number = parseInt(document.getElementById('wish').textContent);
-                                number++;
-                                document.getElementById('wish').textContent = number;
-                            }
-
-
-                        }
-                        , error: function (result) {
-                            console.log(result);
-                        }
-
-                    });
-            }
-
-        }
-
-
-    </script>
+   

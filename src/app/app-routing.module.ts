@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DetailsComponent } from './details/details.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ProductListComponent } from './Store/product-list/product-list.component';
 
 const routes: Routes = [
- 
+ {path:"details/:id",component:DetailsComponent},
 {path:"productList",component:ProductListComponent},
 {path:"homePage",component:HomePageComponent},
 {path:'',redirectTo:'/homePage',pathMatch:'full'}

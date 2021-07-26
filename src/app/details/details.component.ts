@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import{ProductdetailsService} from 'src/app/Services/productdetails.service';
 import { Product } from 'src/app/Shared/Product';
 import { ProductDetails } from 'src/app/Shared/ProductDetails';
@@ -13,10 +14,13 @@ import { RatingDetailsForProduct } from 'src/app/Shared/RatingDetailsForProduct'
 export class DetailsComponent implements OnInit {
   productdetails:ProductDetails=new ProductDetails("",0,"",0,"",0,0,0,new Date('12/1/2020'),"0",0,0,"",new RatingDetailsForProduct(0,0,0,0,0,0,0,0,0,0,0,0,0),[],[]);
 
-  constructor(private _productdetailsService: ProductdetailsService) { }
-
+  constructor(private _productdetailsService: ProductdetailsService,private activatedRoute:ActivatedRoute) { }
+  id:number=0;
   ngOnInit(): void {
-    this._productdetailsService.GetProductDetails().subscribe(d => {this.productdetails = d; console.log(d) })
+    this.activatedRoute.paramMap.subscribe((parms:ParamMap)=>{
+      this.id=parseInt(parms.get('id')!);
+    });
+    this._productdetailsService.GetProductDetails(this.id).subscribe(d => {this.productdetails = d; console.log(d) })
   }
 
 }
