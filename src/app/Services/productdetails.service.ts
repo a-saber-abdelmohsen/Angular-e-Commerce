@@ -7,9 +7,9 @@ import { ProductDetails } from '../Shared/ProductDetails';
   providedIn: 'root'
 })
 export class ProductdetailsService {
-  BaseURL: string = "http://localhost:9602/api/DetailsPage/1";
+  BaseURL: string = "http://localhost:9602/api/DetailsPage";
   constructor(  private _http: HttpClient) { }
-  GetProductDetails(): Observable<ProductDetails>{
-    return this._http.get<ProductDetails>(this.BaseURL);
+  GetProductDetails(id): Observable<ProductDetails>{
+    return this._http.get<ProductDetails>(this.BaseURL+"/"+id);
   }
 }

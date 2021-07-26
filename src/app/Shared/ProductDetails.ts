@@ -1,5 +1,5 @@
 import { Brand } from "./Brand";
-import { Rating } from "./Rating";
+import { Rating2 } from "./Rating2";
 import { RatingDetailsForProduct } from "./RatingDetailsForProduct";
 import { Product } from "./Product";
 
@@ -21,7 +21,7 @@ export class ProductDetails {
         public Brand_Id: number,
         public Vendor_Name: string,
         public RatingDetail: RatingDetailsForProduct,
-        public Ratings: Rating[],
+        public Ratings: Rating2[],
         public RelatedProducts: Product[]
     ){}
 }
