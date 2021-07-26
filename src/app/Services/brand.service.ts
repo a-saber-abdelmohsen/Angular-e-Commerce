@@ -15,6 +15,17 @@ GetAllBrand():Observable<Brand[]>
 {
   return this._http.get<Brand[]>(this.url);
 }
+
+getById(id: any):Observable<Brand[]>
+{
+  return this._http.get<Brand[]>(`${this.url}/${id}`);
+}
+
+DeleteBrand(id: any):Observable<Brand[]>
+{
+  return this._http.delete<Brand[]>(`${this.url}/${id}`);
+
+}
 }
 
 

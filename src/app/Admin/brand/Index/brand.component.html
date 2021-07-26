@@ -1,28 +1,12 @@
-<form #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)">
-  <div >
-    <label for="Name">brandName</label>
-    <input type="text" name="Name" id="Name" ngModel  >
-
-  </div>
-  <div >
-    <label for="Photo">Photo</label>
-    <input type="text" name="Photo" id="Photo" ngModel>
-
-  </div>
-  <div>
-    <button type="submit">Add Data</button>
-  </div>
-
-</form>
-<br><br>
+<br>  <div>
+  <a class="btn btn-success" routerLink="/brand/Add">Add New Brand</a>
+</div><br>
 <div class="card">
-    <div class="card-header card-header-primary">
-      <h4 class="card-title ">Simple Table</h4>
-      <p class="card-category"> Here is a subtitle for this table</p>
-    </div>
+  
     <div class="card-body">
+    
       <div class="table-responsive">
-        <table class="table">
+        <table class="table ">
           <thead class=" text-primary">
             <th>
               ID
@@ -33,6 +17,12 @@
             <th>
               Photo
             </th>
+            <th>
+              Edit
+            </th>
+            <th>
+              Delete
+            </th>
          
           </thead>
           <tbody>
@@ -40,7 +30,12 @@
                   <td>{{brand.Id}}</td>
                   <td>{{brand.Name}}</td>
                   <td><img src="http://localhost:9602/Content/Imgs/Brands/{{brand.Photo}}" width="100px" height="100px"></td>
-
+                  <td>
+                    <a class="btn btn-primary" routerLink="/brand/Edit/{{brand.Id}}" >Edit Brand</a>
+                  </td>
+                  <td>
+                    <a class="btn btn-danger" (click)="deletebrand(brand.Id)" routerLink="/brand">Delete Brand</a>
+                  </td>
               </tr>
             
           </tbody>
