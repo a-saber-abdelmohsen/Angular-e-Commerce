@@ -1,0 +1,41 @@
+
+  <h2>Add New Subcategory</h2>
+  <div class="container">
+      <form #userPost="ngForm" novalidate (ngSubmit)="onSubmit(userPost.value)" >
+     
+  
+          <div class="form-group">
+              <label>Subcategory Name :</label>
+              <input name="Name" required width="50%" type="text" [(ngModel)]="subcategory.Name"  class="form-control" />
+  
+          </div>
+    
+          <div class="form-group">
+            <label>Main Subcategory Name :</label><br>
+            <select [(ngModel)]="subcategory.Cat_Id" width="50%" required>
+                    <option *ngFor="let main of maincategories" value="{{main.Id}}">{{main.Name}}</option>
+            </select>
+
+        </div>
+     
+        <div class="form-group">
+            <label>Parent Subcategory Name :</label><br>
+            <select [(ngModel)]="subcategory.Parent_Id" width="50%" required>
+                <option value="0">Basic Sub Category</option>
+                <option *ngFor="let sub of subcategories" value="{{sub.Id}}">{{sub.Name}}</option>
+            </select>
+
+        </div>
+          <div id="imageContainer" class="rounded-circle">
+              <input type="text" name="Photo" id="Photo" width="50%" [(ngModel)]="subcategory.Photo" accept="image/png, image/jpeg, image/jpg" class="form-control"  />
+          </div>
+          <br>
+          <input type="submit"class="btn btn-primary" value="Add Subcategory">
+  
+  
+        
+      </form>
+  
+  
+  </div>
+   

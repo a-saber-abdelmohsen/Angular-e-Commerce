@@ -8,6 +8,9 @@ import { WishlistDetailsComponent } from './wishlist-details/wishlist-details.co
 import { BrandComponent } from './Admin/brand/Index/brand.component';
 import { AddBrandComponent } from './Admin/brand/add-brand/add-brand.component';
 import { EditBrandComponent } from './Admin/brand/edit-brand/edit-brand.component';
+import { EditSubcategoryComponent } from './Admin/subcategory/edit-subcategory/edit-subcategory.component';
+import { AddSubcategoryComponent } from './Admin/subcategory/add-subcategory/add-subcategory.component';
+import { SubcategoryComponent } from './Admin/subcategory/index/subcategory.component';
 
 const routes: Routes = [
   { path: 'details/:id', component: DetailsComponent },
@@ -17,9 +20,12 @@ const routes: Routes = [
   { path: 'homePage', component: HomePageComponent },
   { path: 'Cart', component: CartDetailsComponent },
   { path: 'wishlist', component: WishlistDetailsComponent },
+   //Subcategory Path
+   { path: 'subcategory', component: SubcategoryComponent },
+   {path:'subcategory/Add',component:AddSubcategoryComponent},
+   {path:'subcategory/Edit/:id',component:EditSubcategoryComponent},
     //Brad Path
-    { path: 'brand', component: BrandComponent 
- },
+    { path: 'brand', component: BrandComponent },
       {path:'brand/Add',component:AddBrandComponent},
       {path:'brand/Edit/:id',component:EditBrandComponent},
  
