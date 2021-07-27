@@ -23,9 +23,13 @@ import { AddBrandComponent } from './Admin/brand/add-brand/add-brand.component';
 import { EditBrandComponent } from './Admin/brand/edit-brand/edit-brand.component';
 import { CartComponent } from './header/cart/cart.component';
 import { CartProductComponent } from './header/cart/cart-product/cart-product.component';
+<<<<<<< HEAD
+import { CheckOutComponent } from './check-out/check-out.component';
+=======
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoaderComponent } from './header/loader/loader.component';
 import { LoaderInterceptor } from './loader/loader.interceptor';
+>>>>>>> fd177e20d97651a4cb103a9b70de2ca3e668bc80
 
 
 @NgModule({
@@ -47,7 +51,11 @@ import { LoaderInterceptor } from './loader/loader.interceptor';
     EditBrandComponent,
     CartComponent,
     CartProductComponent,
+<<<<<<< HEAD
+    CheckOutComponent
+=======
     LoaderComponent
+>>>>>>> fd177e20d97651a4cb103a9b70de2ca3e668bc80
   ],
   imports: [
     BrowserModule,
