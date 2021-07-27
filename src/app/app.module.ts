@@ -20,6 +20,8 @@ import { CartDetailsComponent } from './cart-details/cart-details.component';
 import { WishlistDetailsComponent } from './wishlist-details/wishlist-details.component';
 import { AddBrandComponent } from './Admin/brand/add-brand/add-brand.component';
 import { EditBrandComponent } from './Admin/brand/edit-brand/edit-brand.component';
+import { LoginComponent } from './Auth/login/login.component';
+import { RegisterComponent } from './Auth/register/register.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { EditBrandComponent } from './Admin/brand/edit-brand/edit-brand.componen
     CartDetailsComponent,
     WishlistDetailsComponent,
     AddBrandComponent,
-    EditBrandComponent
+    EditBrandComponent,
+    LoginComponent,
+    RegisterComponent
     
   ],
   imports: [
