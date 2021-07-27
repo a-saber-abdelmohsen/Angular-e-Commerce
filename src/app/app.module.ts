@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +24,17 @@ import { EditBrandComponent } from './Admin/brand/edit-brand/edit-brand.componen
 import { SubcategoryComponent } from './Admin/subcategory/index/subcategory.component';
 import { AddSubcategoryComponent } from './Admin/subcategory/add-subcategory/add-subcategory.component';
 import { EditSubcategoryComponent } from './Admin/subcategory/edit-subcategory/edit-subcategory.component';
+import { LoginComponent } from './Auth/login/login.component';
+import { RegisterComponent } from './Auth/register/register.component';
+import { CartComponent } from './header/cart/cart.component';
+import { CartProductComponent } from './header/cart/cart-product/cart-product.component';
+import { CheckOutComponent } from './check-out/check-out.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoaderComponent } from './header/loader/loader.component';
+import { LoaderInterceptor } from './loader/loader.interceptor';
+import { IndexComponent } from './Admin/MainCategory/index/index.component';
+import { AddMainCategoryComponent } from './Admin/MainCategory/add-main-category/add-main-category.component';
+import { EditMainCategoryComponent } from './Admin/MainCategory/edit-main-category/edit-main-category.component';
 
 
 @NgModule({
@@ -44,17 +56,29 @@ import { EditSubcategoryComponent } from './Admin/subcategory/edit-subcategory/e
     EditBrandComponent,
     SubcategoryComponent,
     AddSubcategoryComponent,
-    EditSubcategoryComponent
-    
+    EditSubcategoryComponent,
+    LoginComponent,
+    RegisterComponent,
+    CartComponent,
+    CartProductComponent,
+    CheckOutComponent,
+    LoaderComponent,
+    IndexComponent,
+    AddMainCategoryComponent,
+    EditMainCategoryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    MatProgressBarModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

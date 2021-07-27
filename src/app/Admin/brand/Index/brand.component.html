@@ -1,45 +1,47 @@
-<br>  <div>
-  <a class="btn btn-success" routerLink="/brand/Add">Add New Brand</a>
-</div><br>
-<div class="card">
-  
-    <div class="card-body">
+<div class="container">
+  <br>  <div>
+    <a class="btn btn-success" routerLink="/brand/Add">Add New Brand</a>
+  </div><br>
+  <div class="card">
     
-      <div class="table-responsive">
-        <table class="table ">
-          <thead class=" text-primary">
-            <th>
-              ID
-            </th>
-            <th>
-              Name
-            </th>
-            <th>
-              Photo
-            </th>
-            <th>
-              Edit
-            </th>
-            <th>
-              Delete
-            </th>
-         
-          </thead>
-          <tbody>
-              <tr *ngFor="let brand of brands">
-                  <td>{{brand.Id}}</td>
-                  <td>{{brand.Name}}</td>
-                  <td><img src="http://localhost:9602/Content/Imgs/Brands/{{brand.Photo}}" width="100px" height="100px"></td>
-                  <td>
-                    <a class="btn btn-primary" routerLink="/brand/Edit/{{brand.Id}}" >Edit Brand</a>
-                  </td>
-                  <td>
-                    <a class="btn btn-danger" (click)="deletebrand(brand.Id)" routerLink="/brand">Delete Brand</a>
-                  </td>
-              </tr>
-            
-          </tbody>
-        </table>
+      <div class="card-body">
+      
+        <div class="table-responsive">
+          <table class="table ">
+            <thead class=" text-primary">
+              <th>
+                ID
+              </th>
+              <th>
+                Name
+              </th>
+              <th>
+                Photo
+              </th>
+              <th>
+                Edit
+              </th>
+              <th>
+                Delete
+              </th>
+           
+            </thead>
+            <tbody>
+                <tr *ngFor="let brand of brands">
+                    <td>{{brand.Id}}</td>
+                    <td>{{brand.Name}}</td>
+                    <td><img src="http://localhost:9602/Content/Imgs/Brands/{{brand.Photo}}" width="100px" height="100px"></td>
+                    <td>
+                      <a class="btn btn-primary" routerLink="/brand/Edit/{{brand.Id}}" >Edit Brand</a>
+                    </td>
+                    <td>
+                      <a class="btn btn-danger" (click)="deletebrand(brand.Id)" routerLink="/brand">Delete Brand</a>
+                    </td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
+</div>

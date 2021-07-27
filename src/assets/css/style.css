@@ -1479,7 +1479,7 @@ textarea.input {
 }
 
 .product-details .product-rating>i.fa-star {
-  color: #D10024;
+  color: #ab9c9e;
 }
 
 .product-details .review-link {
@@ -1682,11 +1682,11 @@ textarea.input {
 }
 
 .rating-avg .rating-stars>i, .rating .rating-stars>i {
-  color: #E4E7ED;
+  color: #E4E7ED ;
 }
 
 .rating-avg .rating-stars>i.fa-star, .rating .rating-stars>i.fa-star {
-  color: #D10024;
+  color: #E4E7ED;
 }
 
 .rating li {
