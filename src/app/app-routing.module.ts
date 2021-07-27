@@ -9,6 +9,10 @@ import { BrandComponent } from './Admin/brand/Index/brand.component';
 import { AddBrandComponent } from './Admin/brand/add-brand/add-brand.component';
 import { EditBrandComponent } from './Admin/brand/edit-brand/edit-brand.component';
 import { CheckOutComponent } from './check-out/check-out.component';
+import { Main_Category } from './Shared/Main_Category';
+import { AddMainCategoryComponent } from './Admin/MainCategory/add-main-category/add-main-category.component';
+import { EditMainCategoryComponent } from './Admin/MainCategory/edit-main-category/edit-main-category.component';
+import { IndexComponent } from './Admin/MainCategory/index/index.component';
 
 const routes: Routes = [
   { path: 'details/:id', component: DetailsComponent },
@@ -22,6 +26,11 @@ const routes: Routes = [
   { path: 'brand', component: BrandComponent },
   { path: 'brand/Add', component: AddBrandComponent },
   { path: 'brand/Edit/:id', component: EditBrandComponent },
+
+  //MainCat Path
+  { path: 'MainCategory', component: IndexComponent },
+  { path: 'MainCategory/Add', component: AddMainCategoryComponent },
+  { path: 'MainCategory/Edit/:id', component: EditMainCategoryComponent },
   
   //Checkout path
   { path: 'CheckOut', component: CheckOutComponent },

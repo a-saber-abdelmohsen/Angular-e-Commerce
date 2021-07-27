@@ -27,12 +27,9 @@ import { CheckOutComponent } from './check-out/check-out.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoaderComponent } from './header/loader/loader.component';
 import { LoaderInterceptor } from './loader/loader.interceptor';
-<<<<<<< Updated upstream
-=======
 import { IndexComponent } from './Admin/MainCategory/index/index.component';
 import { AddMainCategoryComponent } from './Admin/MainCategory/add-main-category/add-main-category.component';
 import { EditMainCategoryComponent } from './Admin/MainCategory/edit-main-category/edit-main-category.component';
->>>>>>> Stashed changes
 
 
 @NgModule({
@@ -55,14 +52,10 @@ import { EditMainCategoryComponent } from './Admin/MainCategory/edit-main-catego
     CartComponent,
     CartProductComponent,
     CheckOutComponent,
-<<<<<<< Updated upstream
-    LoaderComponent
-=======
     LoaderComponent,
     IndexComponent,
     AddMainCategoryComponent,
     EditMainCategoryComponent
->>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
