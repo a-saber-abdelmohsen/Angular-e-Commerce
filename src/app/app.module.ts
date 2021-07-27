@@ -22,6 +22,7 @@ import { AddBrandComponent } from './Admin/brand/add-brand/add-brand.component';
 import { EditBrandComponent } from './Admin/brand/edit-brand/edit-brand.component';
 import { CartComponent } from './header/cart/cart.component';
 import { CartProductComponent } from './header/cart/cart-product/cart-product.component';
+import { CheckOutComponent } from './check-out/check-out.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { CartProductComponent } from './header/cart/cart-product/cart-product.co
     AddBrandComponent,
     EditBrandComponent,
     CartComponent,
-    CartProductComponent
+    CartProductComponent,
+    CheckOutComponent
   ],
   imports: [
     BrowserModule,

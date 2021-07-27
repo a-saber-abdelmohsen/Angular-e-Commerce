@@ -8,6 +8,7 @@ import { WishlistDetailsComponent } from './wishlist-details/wishlist-details.co
 import { BrandComponent } from './Admin/brand/Index/brand.component';
 import { AddBrandComponent } from './Admin/brand/add-brand/add-brand.component';
 import { EditBrandComponent } from './Admin/brand/edit-brand/edit-brand.component';
+import { CheckOutComponent } from './check-out/check-out.component';
 
 const routes: Routes = [
   { path: 'details/:id', component: DetailsComponent },
@@ -21,6 +22,9 @@ const routes: Routes = [
   { path: 'brand', component: BrandComponent },
   { path: 'brand/Add', component: AddBrandComponent },
   { path: 'brand/Edit/:id', component: EditBrandComponent },
+  
+  //Checkout path
+  { path: 'CheckOut', component: CheckOutComponent },
 
   { path: '', redirectTo: '/homePage', pathMatch: 'full' },
   { path: '**', redirectTo: '/homePage', pathMatch: 'full' },
