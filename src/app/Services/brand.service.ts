@@ -23,7 +23,7 @@ export class BrandService {
     let formData = new FormData();
     formData.append('Name', data.Name);
     formData.append('imageFile', data.imageFile);
-    return this._http.post<any>(this.url+"/create", data);
+    return this._http.post<any>(this.url+"/create", formData);
   }
 
   DeleteBrand(id: any): Observable<Brand[]> {
