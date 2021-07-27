@@ -17,8 +17,9 @@ export class AddBrandComponent implements OnInit {
   }
   onSubmit(data: any)
   {
-    this._http.post(this.url,data).subscribe((result)=>{console.warn("result",result)});
-    console.warn(data);
+    this._http.post(this.url,data).subscribe(
+      (result)=>{console.warn("result",result)});
+      console.warn(data);
   }
 
 }
