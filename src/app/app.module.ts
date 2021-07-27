@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,9 @@ import { AddBrandComponent } from './Admin/brand/add-brand/add-brand.component';
 import { EditBrandComponent } from './Admin/brand/edit-brand/edit-brand.component';
 import { CartComponent } from './header/cart/cart.component';
 import { CartProductComponent } from './header/cart/cart-product/cart-product.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoaderComponent } from './header/loader/loader.component';
+import { LoaderInterceptor } from './loader/loader.interceptor';
 
 
 @NgModule({
@@ -42,16 +46,21 @@ import { CartProductComponent } from './header/cart/cart-product/cart-product.co
     AddBrandComponent,
     EditBrandComponent,
     CartComponent,
-    CartProductComponent
+    CartProductComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    MatProgressBarModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
