@@ -1,6 +1,8 @@
-<div class="container">
+<router-outlet #Outlet="outlet"></router-outlet>
+
+<div class="container" [hidden]="Outlet.isActivated">
     <br>  <div>
-      <a class="btn btn-success" routerLink="/MainCategory/Add">Add New MainCategory</a>
+      <a class="btn btn-success" routerLink="/admin/MainCategory/Add">Add New MainCategory</a>
     </div><br>
     <div class="card">
       
@@ -32,7 +34,7 @@
                       <td>{{cat.Name}}</td>
                       <td><img src="http://localhost:9602/Content/Imgs/Main_Categories/{{cat.Photo}}" width="100px" height="100px"></td>
                       <td>
-                        <a class="btn btn-primary" routerLink="#" >Edit Brand</a>
+                        <a class="btn btn-primary" routerLink="/admin/MainCategory/Edit/{{cat.Id}}" >Edit Brand</a>
                       </td>
                       <td>
                         

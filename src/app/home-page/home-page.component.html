@@ -1,7 +1,10 @@
-<app-store></app-store>
-<app-product-list></app-product-list>
+<app-nav-bar></app-nav-bar>
+<router-outlet #Outlet="outlet"></router-outlet>
+
+<app-store *ngIf="!Outlet.isActivated"></app-store>
+<app-product-list *ngIf="!Outlet.isActivated"></app-product-list>
 <!--hot deal section-->
-<div id="hot-deal" class="section">
+<div id="hot-deal" class="section" *ngIf="!Outlet.isActivated">
     <!-- container -->
     <div class="container">
         <!-- row -->
@@ -45,5 +48,5 @@
     <!-- /container -->
 </div>
 <!-- end of hot deal-->
-<app-heigh-saled-product-list></app-heigh-saled-product-list>
+<app-heigh-saled-product-list *ngIf="!Outlet.isActivated"></app-heigh-saled-product-list>
 

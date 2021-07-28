@@ -54,12 +54,12 @@ export class HeaderComponent implements OnInit {
   }
 
   Search(): void {
-    let url = '/search/' + this.subId + '/' + this.searchTerm;
+    let url = '/homePage/search/' + this.subId + '/' + this.searchTerm;
     this._router.navigate([url]);
   }
 
   GoToProduct(VendorID: string) {
-    this._router.navigate(['/productList', { userWishID: VendorID }]);
+    this._router.navigate(['/homePage/productList', { userWishID: VendorID }]);
   }
 
 

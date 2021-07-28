@@ -15,30 +15,38 @@ import { Main_Category } from './Shared/Main_Category';
 import { AddMainCategoryComponent } from './Admin/MainCategory/add-main-category/add-main-category.component';
 import { EditMainCategoryComponent } from './Admin/MainCategory/edit-main-category/edit-main-category.component';
 import { IndexComponent } from './Admin/MainCategory/index/index.component';
+import { AdminComponent } from './Admin/admin/admin.component';
 
 const routes: Routes = [
-  { path: 'details/:id', component: DetailsComponent },
-  { path: 'search/:id/:term', component: ProductListComponent },
-  { path: 'productList/:id', component: ProductListComponent },
-  { path: 'productList', component: ProductListComponent },
-  { path: 'homePage', component: HomePageComponent },
-  { path: 'Cart', component: CartDetailsComponent },
-  { path: 'wishlist', component: WishlistDetailsComponent },
-  //Brad Path
-  { path: 'brand', component: BrandComponent },
-  { path: 'brand/Add', component: AddBrandComponent },
-  { path: 'brand/Edit/:id', component: EditBrandComponent },
-//AuthPath
-{path:"login",component:LoginComponent},
-{path:"register",component:RegisterComponent},
-
-  //MainCat Path
-  { path: 'MainCategory', component: IndexComponent },
-  { path: 'MainCategory/Add', component: AddMainCategoryComponent },
-  { path: 'MainCategory/Edit/:id', component: EditMainCategoryComponent },
+  { path: 'homePage', component: HomePageComponent, children: [
+    { path: 'details/:id', component: DetailsComponent },
+    { path: 'search/:id/:term', component: ProductListComponent },
+    { path: 'productList/:id', component: ProductListComponent },
+    { path: 'productList', component: ProductListComponent },
+    { path: 'Cart', component: CartDetailsComponent },
+    { path: 'wishlist', component: WishlistDetailsComponent },
+    { path: 'CheckOut', component: CheckOutComponent }
+  ]},
   
+  //AuthPath
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+
   //Checkout path
-  { path: 'CheckOut', component: CheckOutComponent },
+  
+
+  //Admin
+  {path: 'admin', component: AdminComponent, children: [
+    { path: 'brand', component: BrandComponent , children: [
+      { path: 'Add', component: AddBrandComponent },
+      { path: 'Edit/:id', component: EditBrandComponent }
+    ]},
+    { path: 'MainCategory', component: IndexComponent, children: [
+      { path: 'Add', component: AddMainCategoryComponent },
+      { path: 'Edit/:id', component: EditMainCategoryComponent },
+    ]},
+    
+  ]},
 
   { path: '', redirectTo: '/homePage', pathMatch: 'full' },
   { path: '**', redirectTo: '/homePage', pathMatch: 'full' },

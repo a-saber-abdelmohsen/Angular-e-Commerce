@@ -32,6 +32,7 @@ import { LoaderInterceptor } from './loader/loader.interceptor';
 import { IndexComponent } from './Admin/MainCategory/index/index.component';
 import { AddMainCategoryComponent } from './Admin/MainCategory/add-main-category/add-main-category.component';
 import { EditMainCategoryComponent } from './Admin/MainCategory/edit-main-category/edit-main-category.component';
+import { AdminComponent } from './Admin/admin/admin.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { EditMainCategoryComponent } from './Admin/MainCategory/edit-main-catego
     LoaderComponent,
     IndexComponent,
     AddMainCategoryComponent,
-    EditMainCategoryComponent
+    EditMainCategoryComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
