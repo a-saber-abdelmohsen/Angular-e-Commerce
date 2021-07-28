@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MainCategoryService } from 'src/app/Services/main-category.service';
 import { SubcategoryService } from 'src/app/Services/subcategory.service';
