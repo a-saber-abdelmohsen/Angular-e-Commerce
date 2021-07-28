@@ -36,7 +36,7 @@ export class EditBrandComponent implements OnInit {
     console.log(this.brand)
     this._brandService.PutBrand(this.brand).subscribe(
       d => {
-        this._router.navigate(["/brand"]);
+        this._router.navigate(["/admin/brand"]);
       },
       err => console.log(err)
     )
