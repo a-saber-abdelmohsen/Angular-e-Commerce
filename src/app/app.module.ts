@@ -21,6 +21,9 @@ import { CartDetailsComponent } from './cart-details/cart-details.component';
 import { WishlistDetailsComponent } from './wishlist-details/wishlist-details.component';
 import { AddBrandComponent } from './Admin/brand/add-brand/add-brand.component';
 import { EditBrandComponent } from './Admin/brand/edit-brand/edit-brand.component';
+import { SubcategoryComponent } from './Admin/subcategory/index/subcategory.component';
+import { AddSubcategoryComponent } from './Admin/subcategory/add-subcategory/add-subcategory.component';
+import { EditSubcategoryComponent } from './Admin/subcategory/edit-subcategory/edit-subcategory.component';
 import { LoginComponent } from './Auth/login/login.component';
 import { RegisterComponent } from './Auth/register/register.component';
 import { CartComponent } from './header/cart/cart.component';
@@ -52,6 +55,9 @@ import { AdminComponent } from './Admin/admin/admin.component';
     WishlistDetailsComponent,
     AddBrandComponent,
     EditBrandComponent,
+    SubcategoryComponent,
+    AddSubcategoryComponent,
+    EditSubcategoryComponent,
     LoginComponent,
     RegisterComponent,
     CartComponent,

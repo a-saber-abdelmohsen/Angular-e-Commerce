@@ -8,6 +8,9 @@ import { WishlistDetailsComponent } from './wishlist-details/wishlist-details.co
 import { BrandComponent } from './Admin/brand/Index/brand.component';
 import { AddBrandComponent } from './Admin/brand/add-brand/add-brand.component';
 import { EditBrandComponent } from './Admin/brand/edit-brand/edit-brand.component';
+import { EditSubcategoryComponent } from './Admin/subcategory/edit-subcategory/edit-subcategory.component';
+import { AddSubcategoryComponent } from './Admin/subcategory/add-subcategory/add-subcategory.component';
+import { SubcategoryComponent } from './Admin/subcategory/index/subcategory.component';
 import { LoginComponent } from './Auth/login/login.component';
 import { RegisterComponent } from './Auth/register/register.component';
 import { CheckOutComponent } from './check-out/check-out.component';
@@ -27,6 +30,11 @@ const routes: Routes = [
     { path: 'wishlist', component: WishlistDetailsComponent },
     { path: 'CheckOut', component: CheckOutComponent }
   ]},
+ 
+
+  //AuthPath
+  {path:"login",component:LoginComponent},
+  {path:"register",component:RegisterComponent},
   
   //AuthPath
   { path: 'login', component: LoginComponent },
@@ -45,7 +53,11 @@ const routes: Routes = [
       { path: 'Add', component: AddMainCategoryComponent },
       { path: 'Edit/:id', component: EditMainCategoryComponent },
     ]},
-    
+    { path: 'subcategory', component: SubcategoryComponent, children:[
+      { path:'Add',component:AddSubcategoryComponent},
+      { path:'Edit/:id',component:EditSubcategoryComponent},
+    ]},
+   
   ]},
 
   { path: '', redirectTo: '/homePage', pathMatch: 'full' },

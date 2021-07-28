@@ -1,0 +1,53 @@
+<br>  <div>
+    <a class="btn btn-success" routerLink="/subcategory/Add">Add New Subcategory</a>
+  </div><br>
+  <div class="card">
+    
+      <div class="card-body">
+      
+        <div class="table-responsive">
+          <table class="table ">
+            <thead class=" text-primary">
+              <th>
+                ID
+              </th>
+              <th>
+                Name
+              </th>
+              <th>
+                Main Category
+              </th>
+              <th>
+                Parent Sub Category
+              </th>
+              <th>
+                Photo
+              </th>
+              <th>
+                Edit
+              </th>
+              <th>
+                Delete
+              </th>
+           
+            </thead>
+            <tbody>
+                <tr *ngFor="let subcat of subcategories">
+                    <td>{{subcat.Id}}</td>
+                    <td>{{subcat.Name}}</td>
+                    <td>{{subcat.Main_CategoryName}}</td>
+                    <td>{{subcat.ParentSubCategoryName}}</td>
+                    <td><img src="http://localhost:9602/Content/Imgs/Sub_Categories/{{subcat.Photo}}" width="100px" height="100px"></td>
+                    <td>
+                      <a class="btn btn-primary" routerLink="/subcategory/Edit/{{subcat.Id}}" >Edit Subcategory</a>
+                    </td>
+                    <td>
+                      <a class="btn btn-danger" (click)="deleteSubcategory(subcat.Id)" routerLink="/subcategory">Delete Subcategory</a>
+                    </td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
