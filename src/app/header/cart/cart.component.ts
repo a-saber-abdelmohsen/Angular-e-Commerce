@@ -36,7 +36,7 @@ export class CartComponent implements OnInit {
     this.total = 0;
     for (let i = 0; i < this.cartContent.length; i++) {
       const prod = this.cartContent[i];
-      this._productService.GetProductById(prod.ProductId).subscribe(d => this.total+= d.Offer_Price*prod.Quantity)
+      this._productService.GetProductById(prod.Product_Id).subscribe(d => this.total+= d.Offer_Price*prod.Quantity)
     }
   }
 }

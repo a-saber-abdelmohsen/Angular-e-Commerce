@@ -13,7 +13,8 @@ import { CheckOutForm } from '../Shared/CheckOutForm';
   styleUrls: ['./check-out.component.scss']
 })
 export class CheckOutComponent implements OnInit {
-
+Order:CheckOutForm;
+Products:CartProduct[];
   set cartCount(value: number) { 
     this._cartCount = value;
     this.cartContent = this._cartService.GetCartContent();
@@ -25,6 +26,7 @@ export class CheckOutComponent implements OnInit {
   private _cartCount: number = 0;
   cartContent: CartProduct[] =[];
   total: number = 0;
+  checkFrm:CheckOutForm;
   constructor(
     private _cartService: CartService,
     private _productService: ProductService,
@@ -43,17 +45,26 @@ export class CheckOutComponent implements OnInit {
     this.total = 0;
     for (let i = 0; i < this.cartContent.length; i++) {
       const prod = this.cartContent[i];
-      this._productService.GetProductById(prod.ProductId).subscribe(d => this.total+= d.Offer_Price*prod.Quantity)
+      this._productService.GetProductById(prod.Product_Id).subscribe(d => this.total+= d.Offer_Price*prod.Quantity)
     }}
     url:string='http://localhost:9602/api/CheckOut';
     onSubmit(data: CheckOutForm) {
-    // data.Address = this.data;
+    //data.Address = this.data;
+    data.Products=this.cartContent;
+    data.User_Id!=localStorage.getItem("userId");
       console.log(data);
       this._checkOutService.PostOrder(data).subscribe(
-        (data) => this._router.navigate(["/CheckOut"]),
+        (data) => this._router.navigate(["/homePage"]).then(()=>{window.location.reload()}),
         err => console.log(err))
+        
 
      // this._http.post(this.url,data).subscribe((result)=>{console.warn(result)})
       
     }
+    emptyCart()
+    {
+      this._cartService.EmptyCart();
+    }
+
+    
 }

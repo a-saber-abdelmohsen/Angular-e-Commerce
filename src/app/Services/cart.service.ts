@@ -56,7 +56,7 @@ export class CartService {
       let cartProducts = JSON.parse(localStorage.getItem(this.cart)!) as CartProduct[];
       for (let i = 0; i < cartProducts.length; i++) {
         const element = cartProducts[i];
-        if (element.ProductId == prodId)
+        if (element.Product_Id == prodId)
           return i;
       }
     }
@@ -72,7 +72,7 @@ export class CartService {
     for (let i = 0; i < cartProducts.length; i++) {
       const prod = cartProducts[i];
       
-      if (prod.ProductId == prodId){
+      if (prod.Product_Id == prodId){
         delete cartProducts[i]
         break;
       }

@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row">
       <div class="col-sm-12">
-    
-        <form action="/" #userForms2="ngForm" name="userForm" novalidate (ngSubmit)="onSubmit()">
+    {{errors}}
+        <form action="/"  #userForms2="ngForm" name="userForm" novalidate (ngSubmit)="onSubmit()">
      
             <div class="form-group">
                 <label for="FirstName">First Name:</label>
@@ -19,7 +19,7 @@
              
               <div class="form-group">
                 <label for="LastName">Last Name :</label>
-                <input type="text" class="form-control" id="LastName" name="Last" [class.is-invalid]="LastName.invalid &&LastName.touched" [(ngModel)]="registerData.LastName"
+                <input type="text" class="form-control" id="LastName" name="LastName" [class.is-invalid]="LastName.invalid &&LastName.touched" [(ngModel)]="registerData.LastName"
                  #LastName="ngModel" required >
              
                  <div *ngIf="LastName.touched && LastName.invalid">
@@ -31,7 +31,7 @@
               </div>
               <div class="form-group">
                 <label for="Username">Last Name :</label>
-                <input type="text" class="form-control" id="Username" name="User" [class.is-invalid]="Username.invalid &&Username.touched" [(ngModel)]="registerData.Username"
+                <input type="text" class="form-control" id="Username" name="Username" [class.is-invalid]="Username.invalid &&Username.touched" [(ngModel)]="registerData.Username"
                  #Username="ngModel" required >
              
                  <div *ngIf="Username.touched && Username.invalid">
@@ -55,7 +55,7 @@
           </div>
           <div class="form-group">
             <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="pwd" name="password" [(ngModel)]="registerData.PasswordHash" [class.is-invalid]="password.invalid && password.touched" #password="ngModel" required>
+            <input type="password" class="form-control" id="pwd" name="PasswordHash" [(ngModel)]="registerData.PasswordHash" [class.is-invalid]="password.invalid && password.touched" #password="ngModel" required>
           </div>
           <div class="form-group">
             <label for="pwd2">Confirm Password:</label>
@@ -73,9 +73,9 @@
 {{registerData.Photo}}
           <div class="form-group">
  <label>Your Role</label>
-            <select #role="ngModel" required [(ngModel)]=registerData.Role class="form-control" name="role">
-                <option value="0">User</option>
-                <option value="1">Vendor</option>
+            <select #role="ngModel" required [(ngModel)]=registerData.Role class="form-control" name="Role">
+                <option value="User">User</option>
+                <option value="Vendor">Vendor</option>
             </select>
           </div>
             <button type="submit" class="btn btn-default" [disabled]="userForms2.form.invalid">Register</button>

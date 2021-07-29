@@ -37,4 +37,36 @@ export class ProductService {
   GetProductById(prodId: number): Observable<Product>{
     return this._http.get<Product>('http://localhost:9602/api/product/'+prodId);
   }
+  deleteProduct(id: any):Observable<any>
+{
+  return this._http.delete<any>(`http://localhost:9602/api/product/${id}`);
+}
+addProduct(_Product: Product):Observable<Product>
+{
+  let frmData=new FormData();
+frmData.append("Name",_Product.Name)
+frmData.append("Photo",_Product.Photo)
+frmData.append("Offer_Price",_Product.Offer_Price+"")
+frmData.append("Price",_Product.Price+"")
+frmData.append("Quantity",_Product.Quantity+"")
+frmData.append("Sub_Cat_Id",_Product.Sub_Cat_Id+"")
+frmData.append("Vendor_User_id",_Product.Vendor_User_id+"")
+frmData.append("Brand_Id",_Product.Brand_Id+"")
+frmData.append("Desc",_Product.Desc)
+  return this._http.post<Product>("http://localhost:9602/api/product",frmData);
+}
+editProduct(id: any,_Product: Product):Observable<Product>
+{
+  let frmData=new FormData();
+  frmData.append("Name",_Product.Name)
+  frmData.append("Photo",_Product.Photo)
+frmData.append("Offer_Price",_Product.Offer_Price+"")
+frmData.append("Price",_Product.Price+"")
+frmData.append("Quantity",_Product.Quantity+"")
+frmData.append("Sub_Cat_Id",_Product.Sub_Cat_Id+"")
+frmData.append("Vendor_User_id",_Product.Vendor_User_id+"")
+frmData.append("Brand_Id",_Product.Brand_Id+"")
+frmData.append("Desc",_Product.Desc)
+  return this._http.put<Product>(`http://localhost:9602/api/product/${id}`,frmData);
+}
 }

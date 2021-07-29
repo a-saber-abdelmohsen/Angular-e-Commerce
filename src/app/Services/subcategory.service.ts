@@ -18,9 +18,9 @@ export class SubcategoryService {
 {
   return this._http.get<SubCategory>(`${this.url}/${id}`);
 }
-deleteSubcategory(id: any):Observable<SubCategory[]>
+deleteSubcategory(id: any):Observable<any>
 {
-  return this._http.delete<SubCategory[]>(`${this.url}/${id}`);
+  return this._http.delete<any>(`${this.url}/${id}`);
 }
 addSubcategory(_SubCategory: SubCategory/*,file:any*/):Observable<any>
 {
