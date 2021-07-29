@@ -39,6 +39,8 @@ import { AddProductComponent } from './Admin/product/add-product/add-product.com
 import { EditProdcutComponent } from './Admin/product/edit-prodcut/edit-prodcut.component';
 
 import { AdminComponent } from './Admin/admin/admin.component';
+import { AuthGurd } from './Shared/AuthGurdClass';
+import { AuthAdminGurd } from './Shared/AuthAdminGurd';
 
 
 @NgModule({
@@ -85,6 +87,7 @@ import { AdminComponent } from './Admin/admin/admin.component';
     BrowserAnimationsModule
   ],
   providers: [
+    AuthGurd,AuthAdminGurd,
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

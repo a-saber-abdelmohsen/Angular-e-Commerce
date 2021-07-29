@@ -42,6 +42,7 @@ export class HeaderComponent implements OnInit {
         .GetWishListForThisUser(this.userid)
         .subscribe((data) => {
           this.wishListCount = data.length;
+          alert(this.userid)
         });
       this._wishListService.currentMessage.subscribe((message) => {
         this._wishListService

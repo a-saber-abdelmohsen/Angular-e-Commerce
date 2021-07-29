@@ -14,8 +14,8 @@ export class ProductComponent implements OnInit {
   flagAlreadyAdded: boolean = false;
   result: any;
   ClassRed: boolean = false;
-  //userid=localStorage.getItem("UserId");
-  userid = '123';
+  userid=localStorage.getItem("userId");
+  //userid = '123';
   @Input() product!: Product;
   constructor(
     private _router: Router,

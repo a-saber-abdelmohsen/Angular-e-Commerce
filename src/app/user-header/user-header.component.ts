@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from '../Services/login.service';
 
 @Component({
   selector: 'app-user-header',
@@ -8,13 +9,19 @@ import { Router } from '@angular/router';
 })
 export class UserHeaderComponent implements OnInit {
 userRgisterd:boolean=false
-  constructor(private router:Router) {
+  constructor(private router:Router,private loginService:LoginService) {
     if(localStorage.getItem("userId")==null){
     this.userRgisterd=false;
     }else{
       this.userRgisterd=true;
     }
-
+    this.loginService.currentMessage2.subscribe(mess=>{
+      if(localStorage.getItem("userId")==null){
+        this.userRgisterd=false;
+        }else{
+          this.userRgisterd=true;
+        }
+    })
    }
 
   ngOnInit(): void {
@@ -25,6 +32,7 @@ userRgisterd:boolean=false
     localStorage.removeItem("userName")
     localStorage.removeItem("userId")
     localStorage.removeItem("role")
+   this.loginService.changeMessage('')
     this.router.navigate(['/login'])
     }
   }

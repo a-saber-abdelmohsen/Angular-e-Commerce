@@ -23,6 +23,7 @@ import { IndexProductComponent } from './Admin/product/index-product/index-produ
 import { AddProductComponent } from './Admin/product/add-product/add-product.component';
 import { EditProdcutComponent } from './Admin/product/edit-prodcut/edit-prodcut.component';
 import { AdminComponent } from './Admin/admin/admin.component';
+import { AuthAdminGurd } from './Shared/AuthAdminGurd';
 
 const routes: Routes = [
   { path: 'homePage', component: HomePageComponent, children: [
@@ -47,7 +48,7 @@ const routes: Routes = [
   
 
   //Admin
-  {path: 'admin', component: AdminComponent, children: [
+  {path: 'admin', component: AdminComponent,canActivate:[AuthAdminGurd], children: [
     { path: 'brand', component: BrandComponent , children: [
       { path: 'Add', component: AddBrandComponent },
       { path: 'Edit/:id', component: EditBrandComponent }
@@ -60,13 +61,14 @@ const routes: Routes = [
       { path:'Add',component:AddSubcategoryComponent},
       { path:'Edit/:id',component:EditSubcategoryComponent},
     ]},
-   
-  ]},
-
-  //Product
+     //Product
   {path:'product',component:IndexProductComponent},
   {path:'product/add',component:AddProductComponent},
   {path:'product/edit/:id',component:EditProdcutComponent},
+  ]},
+
+
+ 
   { path: '', redirectTo: '/homePage', pathMatch: 'full' },
   { path: '**', redirectTo: '/homePage', pathMatch: 'full' },
 ];

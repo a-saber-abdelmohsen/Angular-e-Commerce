@@ -54,7 +54,7 @@ this.actvRoute.paramMap.subscribe((params:ParamMap)=>{
 
     this.productservice.editProduct(this.id,this.productData).subscribe(data => {
      
-this.router.navigate(['/product']);
+this.router.navigate(['/admin/product']);
 
     }, error => {this.errors=error.error.error_description;console.log(error.error)});
   }

@@ -17,7 +17,7 @@ export class NavBarComponent implements OnInit {
     this.src.GetSubWithChild().subscribe(data=>{this.subctWithChild=data})
   }
   GoToSubProduct(id:number){
-    this.router.navigate(['/productList',{Subid:id}])
+    this.router.navigate(['/homePage/productList',{Subid:id}])
    
   }
 }

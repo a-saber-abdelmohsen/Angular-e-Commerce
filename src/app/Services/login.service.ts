@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { Login } from '../Shared/login';
 import { Register } from '../Shared/register';
 
@@ -9,7 +9,8 @@ import { Register } from '../Shared/register';
   providedIn: 'root'
 })
 export class LoginService {
-
+  private messageSource2 = new BehaviorSubject("")
+  currentMessage2 = this.messageSource2.asObservable();
   constructor(private _httpClint:HttpClient) { }
 
   Login(user:Login):Observable<any>{
@@ -41,5 +42,8 @@ export class LoginService {
   frmData.append("ConfirmPassword",user.ConfirmPassword)
   frmData.append("role",user.Role)
     return this._httpClint.post<any>("http://localhost:9602/api/account",frmData)
+  }
+  changeMessage(message: string) {
+    this.messageSource2.next(message)
   }
 }

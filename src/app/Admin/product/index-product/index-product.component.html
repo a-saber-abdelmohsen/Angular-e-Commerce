@@ -1,6 +1,6 @@
 
 <br>  <div>
-    <a class="btn btn-success" routerLink="/product/add">Add New Subcategory</a>
+    <a class="btn btn-success" routerLink="/admin/product/add">Add New Subcategory</a>
   </div><br>
   <div class="card">
     
@@ -57,10 +57,10 @@
               
                     <!-- <td><img src="http://localhost:9602/Content/Imgs/Sub_Categories/{{subcat.Photo}}" width="100px" height="100px"></td> -->
                     <td>
-                      <a class="btn btn-primary" routerLink="/product/edit/{{product.Id}}" >Edit Product</a>
+                      <a class="btn btn-primary" routerLink="/admin/product/edit/{{product.Id}}" >Edit Product</a>
                     </td>
                     <td>
-                      <a class="btn btn-danger" (click)="deleteProduct(product.Id)" routerLink="/product">Delete Product</a>
+                      <a class="btn btn-danger" (click)="deleteProduct(product.Id)" >Delete Product</a>
                     </td>
                 </tr>
               

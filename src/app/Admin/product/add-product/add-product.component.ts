@@ -52,9 +52,9 @@ export class AddProductComponent implements OnInit {
 
     this.productser.addProduct(this.productData).subscribe(data => {
      
-this.router.navigate(['/product']);
+this.router.navigate(['/admin/product']);
 
-      // this.router.navigate(["/homePage"])
-    }, error => {this.errors=error.error.error_description});
+    
+    }, error => {this.errors=error.error.error_description;console.log(error.error)});
   }
 }

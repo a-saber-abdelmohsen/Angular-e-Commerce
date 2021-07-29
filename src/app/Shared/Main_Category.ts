@@ -3,6 +3,6 @@ export class Main_Category{
         public Id: number,
         public Name: string,
         public Photo: string,
-        public imageFile: File
+        public imageFile: any
     ){}
 }

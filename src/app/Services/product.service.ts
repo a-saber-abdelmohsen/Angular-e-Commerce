@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../Shared/Product';
@@ -43,6 +43,14 @@ export class ProductService {
 }
 addProduct(_Product: Product):Observable<Product>
 {
+  const headerss = {
+    'Authorization': "Bearer "+localStorage.getItem('access_token'),
+    
+     
+    }
+
+
+ 
   let frmData=new FormData();
 frmData.append("Name",_Product.Name)
 frmData.append("Photo",_Product.Photo)
@@ -53,7 +61,7 @@ frmData.append("Sub_Cat_Id",_Product.Sub_Cat_Id+"")
 frmData.append("Vendor_User_id",_Product.Vendor_User_id+"")
 frmData.append("Brand_Id",_Product.Brand_Id+"")
 frmData.append("Desc",_Product.Desc)
-  return this._http.post<Product>("http://localhost:9602/api/product",frmData);
+  return this._http.post<Product>("http://localhost:9602/api/product",frmData,{headers:headerss});
 }
 editProduct(id: any,_Product: Product):Observable<Product>
 {
