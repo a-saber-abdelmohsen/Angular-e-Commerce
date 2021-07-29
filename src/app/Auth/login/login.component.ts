@@ -31,6 +31,7 @@ this.router.navigate(["/homePage"])
     localStorage.setItem("access_token",this.responsedUser.access_token)
     localStorage.setItem("userName",this.responsedUser.userName)
     localStorage.setItem("userId",this.responsedUser.userId)
+    alert(this.responsedUser.userId);
     localStorage.setItem("role",this.responsedUser.role)
   }
 }

@@ -20,8 +20,8 @@ export class HeaderComponent implements OnInit {
   wishListCount = 0;
   cartCount: number = 0;
 
-  //userid=localStorage.getItem("UserId");
-  userid = '123';
+  userid=localStorage.getItem("userId");
+ 
   constructor(
     private _subCatService: SubCategoryNavBarService,
     private _productService: ProductService,
@@ -58,9 +58,11 @@ export class HeaderComponent implements OnInit {
     this._router.navigate([url]);
   }
 
-  GoToProduct(VendorID: string) {
+  GoToProduct(VendorID: any) {
+    if(this.userid!=null){
     this._router.navigate(['/homePage/productList', { userWishID: VendorID }]);
+    }
+ 
   }
-
 
 }

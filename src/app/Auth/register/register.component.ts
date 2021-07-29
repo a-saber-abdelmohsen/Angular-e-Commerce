@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/Services/login.service';
 import { Register } from 'src/app/Shared/register';
 
@@ -11,7 +12,8 @@ export class RegisterComponent implements OnInit {
   registerData: Register
   imageUrl: any = "./assets/images/def.png"
   fileToUpload!: File
-  constructor(private _serviceLogin: LoginService) {
+  errors:string=""
+  constructor(private _serviceLogin: LoginService,private router:Router) {
 
     this.registerData = new Register("", "", "",null, "", "", "", "")
   }
@@ -23,11 +25,12 @@ export class RegisterComponent implements OnInit {
 this.registerData.Photo=this.fileToUpload;
 
     this._serviceLogin.Register(this.registerData).subscribe(data => {
-      console.log(data)
-
+     
+      alert(data);
+this.router.navigate(['/login']);
 
       // this.router.navigate(["/homePage"])
-    }, error => { console.log(error) });
+    }, error => {this.errors=error.error.error_description});
   }
   fileHandle(file: any) {
     this.fileToUpload = file.files.item(0)
@@ -35,7 +38,7 @@ this.registerData.Photo=this.fileToUpload;
     var filereader = new FileReader();
     filereader.onload = (event) => {
       this.imageUrl = event.target?.result;
-      console.log(this.imageUrl);
+     
     }
     filereader.readAsDataURL(this.fileToUpload)
   }

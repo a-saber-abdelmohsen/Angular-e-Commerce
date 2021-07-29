@@ -29,9 +29,17 @@ export class LoginService {
     const headerss = {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
+   
     }
-console.log(user.Photo);
-   return this._httpClint.post<any>("http://localhost:9602/api/account",user,{headers:headerss})
-  
+  let frmData=new FormData();
+  frmData.append("avatar",user.Photo)
+  frmData.append("First",user.FirstName)
+  frmData.append("LastName",user.LastName)
+  frmData.append("USername",user.Username)
+  frmData.append("email",user.Email)
+  frmData.append("PasswordHash",user.PasswordHash)
+  frmData.append("ConfirmPassword",user.ConfirmPassword)
+  frmData.append("role",user.Role)
+    return this._httpClint.post<any>("http://localhost:9602/api/account",frmData)
   }
 }
