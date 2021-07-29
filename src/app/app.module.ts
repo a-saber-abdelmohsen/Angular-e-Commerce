@@ -36,6 +36,10 @@ import { IndexComponent } from './Admin/MainCategory/index/index.component';
 import { AddMainCategoryComponent } from './Admin/MainCategory/add-main-category/add-main-category.component';
 import { EditMainCategoryComponent } from './Admin/MainCategory/edit-main-category/edit-main-category.component';
 import { AdminComponent } from './Admin/admin/admin.component';
+import { UsersComponent } from './Admin/users/users.component';
+import { AdminsComponent } from './Admin/users/admins/admins.component';
+import { VendorsComponent } from './Admin/users/vendors/vendors.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -67,7 +71,11 @@ import { AdminComponent } from './Admin/admin/admin.component';
     IndexComponent,
     AddMainCategoryComponent,
     EditMainCategoryComponent,
-    AdminComponent
+    AdminComponent,
+    UsersComponent,
+    AdminsComponent,
+    VendorsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

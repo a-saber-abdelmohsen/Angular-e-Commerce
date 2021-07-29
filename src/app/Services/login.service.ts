@@ -4,6 +4,7 @@ import { catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { Login } from '../Shared/login';
 import { Register } from '../Shared/register';
+import { User } from '../Shared/User';
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +31,21 @@ export class LoginService {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
-console.log(user.Photo);
+    console.log(user.Photo);
    return this._httpClint.post<any>("http://localhost:9602/api/account",user,{headers:headerss})
   
   }
+
+  EditProfile(user: User, imageFile: File){
+    let formData = new FormData();
+    formData.append("Id",user.Id);
+    formData.append("FirstName", user.FirstName);
+    formData.append("Address", user.Address);
+    formData.append("LastName", user.LastName);
+    formData.append("Username", user.Username);
+    formData.append("imageFile", imageFile);
+    console.log(user)
+    return this._httpClint.put<any>(`http://localhost:9602/api/account/edit`,formData)
+  }
+
 }
