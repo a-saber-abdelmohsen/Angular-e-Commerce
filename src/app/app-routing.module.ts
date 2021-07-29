@@ -23,6 +23,10 @@ import { IndexProductComponent } from './Admin/product/index-product/index-produ
 import { AddProductComponent } from './Admin/product/add-product/add-product.component';
 import { EditProdcutComponent } from './Admin/product/edit-prodcut/edit-prodcut.component';
 import { AdminComponent } from './Admin/admin/admin.component';
+import { UsersComponent } from './Admin/users/users.component';
+import { AdminsComponent } from './Admin/users/admins/admins.component';
+import { VendorsComponent } from './Admin/users/vendors/vendors.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: 'homePage', component: HomePageComponent, children: [
@@ -32,7 +36,9 @@ const routes: Routes = [
     { path: 'productList', component: ProductListComponent },
     { path: 'Cart', component: CartDetailsComponent },
     { path: 'wishlist', component: WishlistDetailsComponent },
-    { path: 'CheckOut', component: CheckOutComponent }
+    { path: 'CheckOut', component: CheckOutComponent },
+    { path: 'profile', component: ProfileComponent},
+    { path: 'profile/edit/:id', component: RegisterComponent}
   ]},
  
 
@@ -41,10 +47,6 @@ const routes: Routes = [
   //AuthPath
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent},
-  
-  
-  //Checkout path
-  
 
   //Admin
   {path: 'admin', component: AdminComponent, children: [
@@ -58,7 +60,11 @@ const routes: Routes = [
  
     { path: 'subcategory', component: SubcategoryComponent},
     { path:'subAdd',component:AddSubcategoryComponent},
-    { path:'subEdit/:id',component:EditSubcategoryComponent}
+    { path:'subEdit/:id',component:EditSubcategoryComponent},
+    { path: 'users', component: UsersComponent, children:[
+      { path:'admins',component: AdminsComponent },
+      { path:'vendors',component: VendorsComponent },
+    ]}
    
   ]},
 

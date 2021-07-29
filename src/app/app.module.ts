@@ -39,6 +39,10 @@ import { AddProductComponent } from './Admin/product/add-product/add-product.com
 import { EditProdcutComponent } from './Admin/product/edit-prodcut/edit-prodcut.component';
 
 import { AdminComponent } from './Admin/admin/admin.component';
+import { UsersComponent } from './Admin/users/users.component';
+import { AdminsComponent } from './Admin/users/admins/admins.component';
+import { VendorsComponent } from './Admin/users/vendors/vendors.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -70,6 +74,11 @@ import { AdminComponent } from './Admin/admin/admin.component';
     IndexComponent,
     AddMainCategoryComponent,
     EditMainCategoryComponent,
+    AdminComponent,
+    UsersComponent,
+    AdminsComponent,
+    VendorsComponent,
+    ProfileComponent,
     AddProductComponent,
     IndexProductComponent,
     EditProdcutComponent,
