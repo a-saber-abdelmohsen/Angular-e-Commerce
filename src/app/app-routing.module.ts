@@ -18,6 +18,10 @@ import { Main_Category } from './Shared/Main_Category';
 import { AddMainCategoryComponent } from './Admin/MainCategory/add-main-category/add-main-category.component';
 import { EditMainCategoryComponent } from './Admin/MainCategory/edit-main-category/edit-main-category.component';
 import { IndexComponent } from './Admin/MainCategory/index/index.component';
+import { ProductComponent } from './Store/product/product.component';
+import { IndexProductComponent } from './Admin/product/index-product/index-product.component';
+import { AddProductComponent } from './Admin/product/add-product/add-product.component';
+import { EditProdcutComponent } from './Admin/product/edit-prodcut/edit-prodcut.component';
 
 const routes: Routes = [
   { path: 'details/:id', component: DetailsComponent },
@@ -40,6 +44,7 @@ const routes: Routes = [
 {path:"login",component:LoginComponent},
 {path:"register",component:RegisterComponent},
 
+
   //MainCat Path
   { path: 'MainCategory', component: IndexComponent },
   { path: 'MainCategory/Add', component: AddMainCategoryComponent },
@@ -48,6 +53,10 @@ const routes: Routes = [
   //Checkout path
   { path: 'CheckOut', component: CheckOutComponent },
 
+  //Product
+  {path:'product',component:IndexProductComponent},
+  {path:'product/add',component:AddProductComponent},
+  {path:'product/edit/:id',component:EditProdcutComponent},
   { path: '', redirectTo: '/homePage', pathMatch: 'full' },
   { path: '**', redirectTo: '/homePage', pathMatch: 'full' },
 ];

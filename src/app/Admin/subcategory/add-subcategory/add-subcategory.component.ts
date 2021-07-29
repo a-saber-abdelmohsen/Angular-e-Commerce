@@ -23,8 +23,11 @@ export class AddSubcategoryComponent implements OnInit {
       this.subcategories=data;
       //this.subcategories=this.subcategories.filter(item=>item.Id!=Id);
     });
-    //this._MaincategoryService.getAllMaincategories()
-    this.maincategories=[new Main_Category(1,"phones"),new Main_Category(2,"labs")];
+    this._MaincategoryService.GetAllMain_cat().subscribe(data=>{
+      this.maincategories=data
+    });
+   
+    
   }
 
   

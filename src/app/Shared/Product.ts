@@ -7,7 +7,7 @@ export class Product {
     constructor(
         public Name: string,
         public Id: number,
-        public Photo: string,
+        public Photo: any,
         public Price: number,
         public Desc: string,
         public Quantity: number,
@@ -15,7 +15,7 @@ export class Product {
         public Sell_Count: number,
         public RatingAvg: number,
         public Brand_Name: string,
-        public Created_at: Date,
+        public Created_at: Date | null,
         public Vendor_User_id: string,
         public Sub_Cat_Id: number,
         public Brand_Id: number,

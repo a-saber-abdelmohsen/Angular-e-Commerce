@@ -12,7 +12,7 @@
     
           <div class="form-group">
             <label>Main Subcategory Name :</label><br>
-            <select [(ngModel)]="subcategory.Cat_Id" width="50%" required>
+            <select [(ngModel)]="subcategory.Cat_Id" width="50%" required name="cat_id">
                     <option *ngFor="let main of maincategories" value="{{main.Id}}">{{main.Name}}</option>
             </select>
 
@@ -20,7 +20,7 @@
      
         <div class="form-group">
             <label>Parent Subcategory Name :</label><br>
-            <select [(ngModel)]="subcategory.Parent_Id" width="50%" required>
+            <select [(ngModel)]="subcategory.Parent_Id" width="50%" required name="parent_id">
                 <option value="0">Basic Sub Category</option>
                 <option *ngFor="let sub of subcategories" value="{{sub.Id}}">{{sub.Name}}</option>
             </select>
