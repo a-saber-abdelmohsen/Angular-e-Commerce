@@ -48,14 +48,14 @@ const routes: Routes = [
 
   //Admin
   {path: 'admin', component: AdminComponent, children: [
-    { path: 'brand', component: BrandComponent , children: [
-      { path: 'Add', component: AddBrandComponent },
-      { path: 'Edit/:id', component: EditBrandComponent }
-    ]},
-    { path: 'MainCategory', component: IndexComponent, children: [
-      { path: 'Add', component: AddMainCategoryComponent },
-      { path: 'Edit/:id', component: EditMainCategoryComponent },
-    ]},
+    { path: 'brand', component: BrandComponent },
+      { path: 'brand/Add', component: AddBrandComponent },
+      { path: 'brand/Edit/:id', component: EditBrandComponent },
+
+    { path: 'MainCategory', component: IndexComponent},
+      { path: 'MainCategory/Add', component: AddMainCategoryComponent },
+      { path: 'MainCategory/Edit/:id', component: EditMainCategoryComponent },
+ 
     { path: 'subcategory', component: SubcategoryComponent},
     { path:'subAdd',component:AddSubcategoryComponent},
     { path:'subEdit/:id',component:EditSubcategoryComponent}

@@ -34,7 +34,7 @@ export class EditMainCategoryComponent implements OnInit {
     console.log(this.main_Cat)
     this._main_CatService.PutMain_Cat(this.main_Cat).subscribe(
       d => {
-        this._router.navigate(["/admin/MainCategory"]).then(()=>{window.location.reload()});
+        this._router.navigate(["/admin/MainCategory"]);
       },
       err => console.log(err)
     )
