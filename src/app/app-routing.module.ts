@@ -36,10 +36,11 @@ const routes: Routes = [
     { path: 'productList', component: ProductListComponent },
     { path: 'Cart', component: CartDetailsComponent },
     { path: 'wishlist', component: WishlistDetailsComponent },
-    { path: 'CheckOut', component: CheckOutComponent },
+    
     { path: 'profile', component: ProfileComponent},
     { path: 'profile/edit/:id', component: RegisterComponent}
   ]},
+  { path: 'homePage/CheckOut', component: CheckOutComponent },
  
 
 

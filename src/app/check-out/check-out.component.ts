@@ -53,7 +53,8 @@ Products:CartProduct[];
     data.User_Id!=localStorage.getItem("userId");
       console.log(data);
       this._checkOutService.PostOrder(data).subscribe(
-        (data) => this._router.navigate(["/homePage"]).then(()=>{window.location.reload()}),
+        
+        (data) => this._router.navigate(["/homePage"]),
         err => console.log(err))
         
 
