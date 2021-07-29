@@ -6,6 +6,7 @@ export class SubCategory{
         public Photo: string,
         public ParentSubCategoryName:string,
         public Main_CategoryName:string,
-        public Parent_Id?: number   
+        public imageFile: File|null ,
+        public Parent_Id?: number
     ){}
 }
