@@ -12,6 +12,7 @@ export class SubcategoryComponent implements OnInit {
   
   subcategories:SubCategory[]=[]
   constructor(private _SubcategoryService:SubcategoryService, private router:Router) { }
+  
 
   ngOnInit(): void {
    this._SubcategoryService.getAllSubcategories().subscribe((data)=>

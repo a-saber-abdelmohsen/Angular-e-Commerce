@@ -71,17 +71,17 @@ textarea {
 }
 
 
-// input[type=file] {
-//     opacity: 0 !important;
-//     position: absolute !important;
-//     top: 0 !important;
-//     right: 0 !important;
-//     bottom: 0 !important;
-//     left: 0 !important;
-//     width: 100% !important;
-//     height: 100% !important;
-//     cursor: pointer;
-// }
+input[type=file] {
+    opacity: 0 !important;
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    cursor: pointer;
+}
 
 
 
@@ -125,4 +125,52 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mat-progress-bar-fill::after {
     background-color: #D10024;
+}
+
+
+
+.w-100 {
+    width: 100% !important;
+}
+
+.w-33 {
+    width: 33% !important;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    width: 100%;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+    background-color: #333;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
 }

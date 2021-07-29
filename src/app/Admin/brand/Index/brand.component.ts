@@ -13,13 +13,15 @@ export class BrandComponent implements OnInit {
 
   brands:Brand[]=[];
  
-  constructor(private _brandService:BrandService, private router:Router) { }
-
-  ngOnInit(): void {
+  constructor(private _brandService:BrandService, private router:Router) { 
     this._brandService.GetAllBrand().subscribe((data)=>{
       this.brands=data;
       console.log(data);
     })
+  }
+
+  ngOnInit(): void {
+    
   }
 
   deletebrand(id: any)

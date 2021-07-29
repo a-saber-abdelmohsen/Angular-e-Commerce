@@ -251,23 +251,30 @@
                                 <!-- Review Form action="/auproduct/AddRate"-->
                                 <div class="col-md-3">
                                     <div id="review-form">
-                                        <form class="review-form" method="post" #userForm="ngForm" novalidate (ngSubmit)="onSubmit()">
+                                        <form class="review-form" method="post" #userform="ngForm"  name="userForm" novalidate (ngSubmit)="onSubmit()">
                                             <input type="hidden" name="Product_Id" value="{{productdetails.Id}}"  [(ngModel)]="ratingModel.Product_Id">
                                             <input type="hidden" name="User_Id" value="Khaled Ahmed"  [(ngModel)]="ratingModel.User_Id">
-                                            <input class="input" type="text" name="Username" placeholder="Your Name"  [(ngModel)]="ratingModel.Username">
-                                            <input class="input" type="email" name="email" [(ngModel)]="email" placeholder="Your Email">
-                                            <textarea class="input" name="Comment" [(ngModel)]="ratingModel.Comment" placeholder="Your Review"></textarea>
+                                            <input class="input" type="text" name="Username" placeholder="Your Name"  [(ngModel)]="ratingModel.Username" required>
+                                            <input class="input" type="email" name="email" [(ngModel)]="email" placeholder="Your Email" >              
+                                            <textarea class="input" name="comment" [(ngModel)]="ratingModel.Comment"  pattern="[a-zA-Z0-9_ ]{20,}" [class.is-invalid]="Comment.invalid && Comment.touched" placeholder="Your Review" #Comment="ngModel" required></textarea>
+                                            <div *ngIf="Comment.touched && Comment.invalid">
+                                                <small class="text-danger" *ngIf="Comment.errors?.required">the Comment is Required</small>
+                                                <small class="text-danger" *ngIf="Comment.errors?.pattern">Comment must be more than (20) charaters</small>
+                                             </div>
                                             <div class="input-rating">
                                                 <span>Your Rating: </span>
                                                 <div class="stars">
-                                                    <input id="star5" name="Rate" [(ngModel)]="ratingModel.Rate" value="5" type="radio" required><label for="star5"></label>
-                                                    <input id="star4" name="Rate" [(ngModel)]="ratingModel.Rate" value="4" type="radio" required><label for="star4"></label>
-                                                    <input id="star3" name="Rate" [(ngModel)]="ratingModel.Rate" value="3" type="radio" required><label for="star3"></label>
-                                                    <input id="star2" name="Rate" [(ngModel)]="ratingModel.Rate" value="2" type="radio" required><label for="star2"></label>
-                                                    <input id="star1" name="Rate" [(ngModel)]="ratingModel.Rate" value="1" type="radio" required><label for="star1"></label>
+                                                    <input id="star5" #Rate="ngModel" [class.is-invalid]="Rate.invalid && Rate.touched" name="Rate" [(ngModel)]="ratingModel.Rate" value="5" type="radio" required><label for="star5"></label>
+                                                    <input id="star4" #Rate="ngModel" [class.is-invalid]="Rate.invalid && Rate.touched" name="Rate" [(ngModel)]="ratingModel.Rate" value="4" type="radio" required><label for="star4"></label>
+                                                    <input id="star3" #Rate="ngModel" [class.is-invalid]="Rate.invalid && Rate.touched" name="Rate" [(ngModel)]="ratingModel.Rate" value="3" type="radio" required><label for="star3"></label>
+                                                    <input id="star2" #Rate="ngModel" [class.is-invalid]="Rate.invalid && Rate.touched" name="Rate" [(ngModel)]="ratingModel.Rate" value="2" type="radio" required><label for="star2"></label>
+                                                    <input id="star1" #Rate="ngModel" [class.is-invalid]="Rate.invalid && Rate.touched" name="Rate" [(ngModel)]="ratingModel.Rate" value="1" type="radio" required><label for="star1"></label>
                                                 </div>
+                                                <div *ngIf="Rate.touched && Rate.invalid">
+                                                    <small class="text-danger" *ngIf="Rate.errors?.required">the Rate is Required</small>
+                                                 </div>
                                             </div>
-                                            <button class="primary-btn" type="submit">Submit</button>
+                                            <input type="submit" class="primary-btn"  name="submit"  value="Submit"/>
                                         </form>
                                         <small class="text-danger" >{{error}}</small>
                                     </div>

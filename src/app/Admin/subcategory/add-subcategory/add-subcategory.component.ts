@@ -12,9 +12,12 @@ import { SubCategory } from 'src/app/Shared/SubCategory';
 export class AddSubcategoryComponent implements OnInit {
 
   constructor(private _SubcategoryService:SubcategoryService,private _MaincategoryService:MainCategoryService) { }
-  subcategory:SubCategory=new SubCategory(0,"",0,"","","",0) ;
+  subcategory:SubCategory =new SubCategory(0,"",0,"","","",null,0)
   subcategories:SubCategory[]=[];
   maincategories:Main_Category[]=[];
+  imageUrl: any = "./assets/images/def.png"
+  fileToUpload!: File
+  //filestring:string
 
   ngOnInit(): void {
     this._SubcategoryService.getAllSubcategories().subscribe((data)=>
@@ -34,7 +37,31 @@ export class AddSubcategoryComponent implements OnInit {
   
   onSubmit(data:any)
   {
-    this._SubcategoryService.addSubcategory(this.subcategory);
+    alert("submit");
+    //this.subcategory.Photo=this.filestring;
+    this.subcategory.imageFile=this.fileToUpload;
+
+    this._SubcategoryService.addSubcategory(this.subcategory/*,this.fileToUpload*/).subscribe(data=>
+      {
+        console.log(data)
+      },error=>
+        {
+          console.log(error)
+        });
+  }
+  fileHandle(file: any) 
+  {
+    this.fileToUpload = file.files.item(0)
+    var filereader = new FileReader();
+    /*filereader.onloadend = (e) => {
+      console.log(filereader.result);
+      this.filestring = filereader.result as string;
+   };*/
+    filereader.onload = (event) => {
+      this.imageUrl = event.target?.result;
+      console.log(this.imageUrl);
+    }
+    filereader.readAsDataURL(this.fileToUpload)
   }
   
 

@@ -1,6 +1,6 @@
 export class CartProduct{
     constructor(
-        public ProductId: number,
+        public Product_Id: number,
         public Quantity: number
     ){}
 }

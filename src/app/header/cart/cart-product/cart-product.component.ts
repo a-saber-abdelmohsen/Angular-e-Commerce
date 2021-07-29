@@ -12,10 +12,10 @@ export class CartProductComponent implements OnInit {
 
 
   @Input() 
-  get productId(): number { return this._productId; }
-  set productId(value: number){
+  get Product_Id(): number { return this._productId; }
+  set Product_Id(value: number){
     this._productId = value;
-    this._productService.GetProductById(this.productId).subscribe(d => this.product = d);
+    this._productService.GetProductById(this.Product_Id).subscribe(d => this.product = d);
   }
   _productId!: number;
   product!: Product;
@@ -31,7 +31,7 @@ export class CartProductComponent implements OnInit {
   }
 
   DeleteFromCart(){
-    this._cartService.DeleteProduct(this.productId);
+    this._cartService.DeleteProduct(this.Product_Id);
   }
 
 }
