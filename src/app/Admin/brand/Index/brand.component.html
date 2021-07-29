@@ -1,6 +1,8 @@
-<div class="container">
+<router-outlet #Outlet="outlet"></router-outlet>
+
+<div class="container" [hidden]="Outlet.isActivated">
   <br>  <div>
-    <a class="btn btn-success" routerLink="/brand/Add">Add New Brand</a>
+    <a class="btn btn-success" routerLink="/admin/brand/Add">Add New Brand</a>
   </div><br>
   <div class="card">
     
@@ -32,10 +34,10 @@
                     <td>{{brand.Name}}</td>
                     <td><img src="http://localhost:9602/Content/Imgs/Brands/{{brand.Photo}}" width="100px" height="100px"></td>
                     <td>
-                      <a class="btn btn-primary" routerLink="/brand/Edit/{{brand.Id}}" >Edit Brand</a>
+                      <a class="btn btn-primary" routerLink="/admin/brand/Edit/{{brand.Id}}" >Edit Brand</a>
                     </td>
                     <td>
-                      <a class="btn btn-danger" (click)="deletebrand(brand.Id)" routerLink="/brand">Delete Brand</a>
+                      <a class="btn btn-danger" (click)="deletebrand(brand.Id)" routerLink="/admin/brand">Delete Brand</a>
                     </td>
                 </tr>
               

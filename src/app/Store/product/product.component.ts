@@ -53,7 +53,7 @@ export class ProductComponent implements OnInit {
   }
 
   GoToDetails(): void {
-    let url = '/details/' + this.product.Id;
+    let url = '/homePage/details/' + this.product.Id;
     this._router.navigate([url]);
   }
   AddToWishList(product: Product) {

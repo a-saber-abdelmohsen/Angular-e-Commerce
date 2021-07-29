@@ -43,8 +43,6 @@ export class CartService {
     let number = 0;
     if (localStorage.getItem(this.cart) != null)
       number = (JSON.parse(localStorage.getItem(this.cart)!) as CartProduct[]).length;
-
-    console.log(number);
     this.cartCount.next(number);
   }
 
@@ -92,4 +90,7 @@ export class CartService {
     return (JSON.parse(localStorage.getItem(this.cart)!) as CartProduct[]);
   }
 
+  EmptyCart(){
+    localStorage.removeItem(this.cart);
+  }
 }

@@ -38,6 +38,7 @@ import { EditMainCategoryComponent } from './Admin/MainCategory/edit-main-catego
 import { AddProductComponent } from './Admin/product/add-product/add-product.component';
 import { EditProdcutComponent } from './Admin/product/edit-prodcut/edit-prodcut.component';
 
+import { AdminComponent } from './Admin/admin/admin.component';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import { EditProdcutComponent } from './Admin/product/edit-prodcut/edit-prodcut.
     EditMainCategoryComponent,
     AddProductComponent,
     IndexProductComponent,
-    EditProdcutComponent
+    EditProdcutComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

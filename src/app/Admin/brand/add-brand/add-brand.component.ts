@@ -27,7 +27,7 @@ export class AddBrandComponent implements OnInit {
     data.imageFile = this.selectedPhoto;
     console.log(data);
     this._brandService.PostBrand(data).subscribe(
-      (data) => this._router.navigate(["/brand"]),
+      (data) => this._router.navigate(["/admin/brand"]),
       err => console.log(err)
     )
     

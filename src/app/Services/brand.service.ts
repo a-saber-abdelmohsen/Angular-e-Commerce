@@ -15,8 +15,8 @@ export class BrandService {
     return this._http.get<Brand[]>(this.url);
   }
 
-  getById(id: any): Observable<Brand[]> {
-    return this._http.get<Brand[]>(`${this.url}/${id}`);
+  getById(id: any): Observable<Brand> {
+    return this._http.get<Brand>(`${this.url}/${id}`);
   }
 
   PostBrand(data: FormBrand): Observable<any>{
@@ -30,5 +30,10 @@ export class BrandService {
     return this._http.delete<Brand[]>(`${this.url}/${id}`);
   }
 
-  
+  PutBrand(data: Brand): Observable<any>{
+    let formData = new FormData();
+    formData.append('Name', data.Name);
+    formData.append('imageFile', data.imageFile);
+    return this._http.put(`${this.url}/${data.Id}`,formData);
+  }
 }

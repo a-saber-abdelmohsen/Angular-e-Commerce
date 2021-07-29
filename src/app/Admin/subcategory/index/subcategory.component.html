@@ -1,5 +1,8 @@
-<br>  <div>
-    <a class="btn btn-success" routerLink="/subcategory/Add">Add New Subcategory</a>
+<router-outlet #Outlet="outlet"></router-outlet>
+
+<div class="container" [hidden]="Outlet.isActivated">
+  <br>  <div>
+    <a class="btn btn-success" routerLink="/admin/subcategory/Add">Add New Subcategory</a>
   </div><br>
   <div class="card">
     
@@ -39,10 +42,10 @@
                     <td>{{subcat.ParentSubCategoryName}}</td>
                     <td><img src="http://localhost:9602/Content/Imgs/Sub_Categories/{{subcat.Photo}}" width="100px" height="100px"></td>
                     <td>
-                      <a class="btn btn-primary" routerLink="/subcategory/Edit/{{subcat.Id}}" >Edit Subcategory</a>
+                      <a class="btn btn-primary" routerLink="/admin/subcategory/Edit/{{subcat.Id}}" >Edit Subcategory</a>
                     </td>
                     <td>
-                      <a class="btn btn-danger" (click)="deleteSubcategory(subcat.Id)" routerLink="/subcategory">Delete Subcategory</a>
+                      <a class="btn btn-danger" (click)="deleteSubcategory(subcat.Id)" routerLink="/admin/subcategory">Delete Subcategory</a>
                     </td>
                 </tr>
               
@@ -51,3 +54,4 @@
         </div>
       </div>
     </div>
+</div>

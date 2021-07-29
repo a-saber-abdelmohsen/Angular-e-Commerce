@@ -18,10 +18,11 @@ export class IndexComponent implements OnInit {
     this._Main_CatService.GetAllMain_cat().subscribe((data)=>{
       this.main_Cat=data;
       console.log(data);
+     
     })
   }
 
-  deletebrand(id: any)
+  deleteMain_category(id: any)
   {
     console.warn(id);
   this._Main_CatService.DeleteMain_cat(id).subscribe(data=>{
@@ -30,4 +31,5 @@ export class IndexComponent implements OnInit {
 
   });
   }
+
 }
