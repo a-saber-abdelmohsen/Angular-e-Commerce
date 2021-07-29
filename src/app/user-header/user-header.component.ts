@@ -32,7 +32,7 @@ userRgisterd:boolean=false
     localStorage.removeItem("userName")
     localStorage.removeItem("userId")
     localStorage.removeItem("role")
-   this.loginService.changeMessage('')
+    this.loginService.changeMessage('')
     this.router.navigate(['/login'])
     }
   }

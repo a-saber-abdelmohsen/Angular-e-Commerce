@@ -92,5 +92,7 @@ export class CartService {
 
   EmptyCart(){
     localStorage.removeItem(this.cart);
+    let number = 0;
+    this.cartCount.next(number);
   }
 }

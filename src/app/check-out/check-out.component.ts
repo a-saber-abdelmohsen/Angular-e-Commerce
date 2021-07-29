@@ -10,61 +10,65 @@ import { CheckOutForm } from '../Shared/CheckOutForm';
 @Component({
   selector: 'app-check-out',
   templateUrl: './check-out.component.html',
-  styleUrls: ['./check-out.component.scss']
+  styleUrls: ['./check-out.component.scss'],
 })
 export class CheckOutComponent implements OnInit {
-Order:CheckOutForm;
-Products:CartProduct[];
-  set cartCount(value: number) { 
+  Order: CheckOutForm;
+  Products: CartProduct[];
+  set cartCount(value: number) {
     this._cartCount = value;
     this.cartContent = this._cartService.GetCartContent();
     this.UpdateTotal();
   }
 
-  get cartCount() {return this._cartCount}
+  get cartCount() {
+    return this._cartCount;
+  }
 
   private _cartCount: number = 0;
-  cartContent: CartProduct[] =[];
+  cartContent: CartProduct[] = [];
   total: number = 0;
-  checkFrm:CheckOutForm;
+  checkFrm: CheckOutForm;
   constructor(
     private _cartService: CartService,
     private _productService: ProductService,
-    private _checkOutService:CheckOutService,
-    private _router:Router,
-    private _http:HttpClient,
-  ) { }
+    private _checkOutService: CheckOutService,
+    private _router: Router,
+    private _http: HttpClient
+  ) {}
 
   ngOnInit(): void {
-    this._cartService.CartCount().subscribe(d => this.cartCount = d);
+    this._cartService.CartCount().subscribe((d) => (this.cartCount = d));
     this._cartService.UpdateCartCount();
     this.cartContent = this._cartService.GetCartContent();
   }
 
-  UpdateTotal(): void{
+  UpdateTotal(): void {
     this.total = 0;
     for (let i = 0; i < this.cartContent.length; i++) {
       const prod = this.cartContent[i];
-      this._productService.GetProductById(prod.Product_Id).subscribe(d => this.total+= d.Offer_Price*prod.Quantity)
-    }}
-    url:string='http://localhost:9602/api/CheckOut';
-    onSubmit(data: CheckOutForm) {
-    data.Products=this.cartContent;
-    data.User_Id!=localStorage.getItem("userId");
-      console.log(data);
-      this._checkOutService.PostOrder(data).subscribe(
-        
-        (data) => this._router.navigate(["/homePage"]),
-        err => console.log(err))
-        
-
-     // this._http.post(this.url,data).subscribe((result)=>{console.warn(result)})
-      
+      this._productService
+        .GetProductById(prod.Product_Id)
+        .subscribe((d) => (this.total += d.Offer_Price * prod.Quantity));
     }
-    emptyCart()
-    {
-      this._cartService.EmptyCart();
-    }
+  }
+  url: string = 'http://localhost:9602/api/CheckOut';
 
-    
+  onSubmit(data: CheckOutForm) {
+    data.Products = this.cartContent;
+    if (localStorage.getItem('userId') != null)
+      data.User_Id = localStorage.getItem('userId')!;
+    else
+      this._router.navigate(['/login'])
+    console.log(data);
+    this._checkOutService.PostOrder(data).subscribe(
+      (data) => this._router.navigate(['/homePage']),
+      (err) => console.log(err)
+    );
+
+    // this._http.post(this.url,data).subscribe((result)=>{console.warn(result)})
+  }
+  emptyCart() {
+    this._cartService.EmptyCart();
+  }
 }
