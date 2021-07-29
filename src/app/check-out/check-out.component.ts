@@ -49,7 +49,6 @@ Products:CartProduct[];
     }}
     url:string='http://localhost:9602/api/CheckOut';
     onSubmit(data: CheckOutForm) {
-    //data.Address = this.data;
     data.Products=this.cartContent;
     data.User_Id!=localStorage.getItem("userId");
       console.log(data);
