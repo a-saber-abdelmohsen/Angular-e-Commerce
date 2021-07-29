@@ -12,12 +12,9 @@ export class CheckOutService {
   constructor(private _http:HttpClient) { }
 
   PostOrder(data: CheckOutForm): Observable<any>{
-    let formData = new FormData();
-    formData.append('Address', data.Address);
-    formData.append('Total_Price',data.Total_Price.toString());
-    formData.append('payment',data.payment.toString());
-    return this._http.post<any>(this.url, formData);
+    return this._http.post<any>(this.url, data);
   }
+  
 
  
 }

@@ -12,14 +12,16 @@ export class IndexComponent implements OnInit {
 
   main_Cat:Main_Category[]=[];
  
-  constructor(private _Main_CatService:MainCategoryService, private router:Router) { }
-
-  ngOnInit(): void {
+  constructor(private _Main_CatService:MainCategoryService, private router:Router) {
     this._Main_CatService.GetAllMain_cat().subscribe((data)=>{
       this.main_Cat=data;
       console.log(data);
      
     })
+   }
+
+  ngOnInit(): void {
+  
   }
 
   deleteMain_category(id: any)
