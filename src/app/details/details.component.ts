@@ -47,23 +47,35 @@ export class DetailsComponent implements OnInit {
 {
 //console.log(this.userModel);
     //alert("inside");
+    if(this.ratingModel.Rate==0)
+    {
+      this.error="the Rate is required please select 1 to 5 stars";
+      return;
+    }
+    if(localStorage.getItem("userName")==null)
+    {
+      this.error="it's not allow please login first !!!";
+      return;
+    }
+
+    this.ratingModel.Username!=localStorage.getItem("userName");
     this.ratingModel.Product_Id=this.productdetails.Id;
     this._productdetailsService.enroll(this.ratingModel).
     subscribe(
     response =>{ 
       console.log('Success!', response);
-      this.ratingModel.Comment="";
-      this.ratingModel.Username="";
-      this.email="";
+      this.ratingModel.Comment=" ";
+      this.ratingModel.Username=" ";
+      this.email=" ";
       this.ratingModel.Rate=0;
       this._productdetailsService.GetProductDetails(this.productdetails.Id).subscribe(d => {this.productdetails = d; console.log(d) })
   }
     ,
     error => {
       console.log('error',error);
-      this.ratingModel.Comment="";
-      this.ratingModel.Username="";
-      this.email="";
+      this.ratingModel.Comment=" ";
+      this.ratingModel.Username=" ";
+      this.email=" ";
       this.ratingModel.Rate=0;
       this.error=error.error.Message;
     }

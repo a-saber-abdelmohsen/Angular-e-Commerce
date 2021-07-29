@@ -14,21 +14,39 @@ export class SubcategoryService {
     return this._http.get<SubCategory[]>(this.url);
   }
 
-  getSubcategoryById(id:any):Observable<SubCategory[]>
+  getSubcategoryById(id:any):Observable<SubCategory>
 {
-  return this._http.get<SubCategory[]>(`${this.url}/${id}`);
+  return this._http.get<SubCategory>(`${this.url}/${id}`);
 }
-deleteSubcategory(id: any):Observable<SubCategory[]>
+deleteSubcategory(id: any):Observable<any>
 {
-  return this._http.delete<SubCategory[]>(`${this.url}/${id}`);
+  return this._http.delete<any>(`${this.url}/${id}`);
 }
-addSubcategory(_SubCategory: SubCategory):Observable<SubCategory>
+addSubcategory(_SubCategory: SubCategory/*,file:any*/):Observable<any>
 {
-  return this._http.post<SubCategory>(`${this.url}`,_SubCategory);
+  /*const headerss = {
+    'content-disposition': `form-data;name="Photo";filename=${file.filename}`,
+    'content-type': 'application/octet-stream'
+  }*/
+  let formData = new FormData();
+  formData.append('Id', `${_SubCategory.Id}`);
+  formData.append('Name', _SubCategory.Name);
+  formData.append("Parent_id",`${_SubCategory.Parent_Id}`);
+  formData.append("Cat_Id",`${_SubCategory.Cat_Id}`);
+  formData.append('imageFile', _SubCategory.imageFile!);
+  return this._http.post<any>(`${this.url}`,
+  formData/*,{headers:headerss}*/);
 }
 editSubcategory(id: any,_SubCategory: SubCategory):Observable<SubCategory>
 {
-  return this._http.put<SubCategory>(`${this.url}/${id}`,_SubCategory);
+  let formData = new FormData();
+  formData.append('Id', `${_SubCategory.Id}`);
+  formData.append('Name', _SubCategory.Name);
+  formData.append("Parent_id",`${_SubCategory.Parent_Id}`);
+  formData.append("Cat_Id",`${_SubCategory.Cat_Id}`);
+  formData.append("Photo",_SubCategory.Photo);
+  formData.append('imageFile', _SubCategory.imageFile!);
+  return this._http.put<SubCategory>(`${this.url}/${id}`,formData);
 }
 
 

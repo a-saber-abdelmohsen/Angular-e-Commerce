@@ -27,7 +27,7 @@ export class AddMainCategoryComponent implements OnInit {
     data.imageFile = this.selectedPhoto;
     console.log(data);
     this._Main_catService.PostMain_Cat(data).subscribe(
-      (data) => this._router.navigate(["/admin/MainCategory"]).then(()=>{window.location.reload()}),
+      (data) => this._router.navigate(["/admin/MainCategory"]),
       err => console.log(err)
     )
     

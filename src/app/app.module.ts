@@ -4,7 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { FormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
+import { IndexProductComponent } from './Admin/product/index-product/index-product.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserHeaderComponent } from './user-header/user-header.component';
@@ -35,6 +35,9 @@ import { LoaderInterceptor } from './loader/loader.interceptor';
 import { IndexComponent } from './Admin/MainCategory/index/index.component';
 import { AddMainCategoryComponent } from './Admin/MainCategory/add-main-category/add-main-category.component';
 import { EditMainCategoryComponent } from './Admin/MainCategory/edit-main-category/edit-main-category.component';
+import { AddProductComponent } from './Admin/product/add-product/add-product.component';
+import { EditProdcutComponent } from './Admin/product/edit-prodcut/edit-prodcut.component';
+
 import { AdminComponent } from './Admin/admin/admin.component';
 import { UsersComponent } from './Admin/users/users.component';
 import { AdminsComponent } from './Admin/users/admins/admins.component';
@@ -75,7 +78,11 @@ import { ProfileComponent } from './profile/profile.component';
     UsersComponent,
     AdminsComponent,
     VendorsComponent,
-    ProfileComponent
+    ProfileComponent,
+    AddProductComponent,
+    IndexProductComponent,
+    EditProdcutComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
