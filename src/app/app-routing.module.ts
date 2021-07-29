@@ -56,10 +56,9 @@ const routes: Routes = [
       { path: 'Add', component: AddMainCategoryComponent },
       { path: 'Edit/:id', component: EditMainCategoryComponent },
     ]},
-    { path: 'subcategory', component: SubcategoryComponent, children:[
-      { path:'Add',component:AddSubcategoryComponent},
-      { path:'Edit/:id',component:EditSubcategoryComponent},
-    ]},
+    { path: 'subcategory', component: SubcategoryComponent},
+    { path:'subAdd',component:AddSubcategoryComponent},
+    { path:'subEdit/:id',component:EditSubcategoryComponent}
    
   ]},
 

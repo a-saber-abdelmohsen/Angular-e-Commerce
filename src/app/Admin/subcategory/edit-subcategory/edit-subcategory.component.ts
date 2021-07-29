@@ -32,8 +32,11 @@ export class EditSubcategoryComponent implements OnInit {
       this.subcategories=data;
       this.subcategories=this.subcategories.filter(item=>item.Id!=this.id);
     });
+    this._MaincategoryService.GetAllMain_cat().subscribe(data=>{
+      this.maincategories=data
+    });
       //this._MaincategoryService.getAllMaincategories()
-    this.maincategories=[new Main_Category(1,"phones",""),new Main_Category(2,"labs","")];
+    //this.maincategories=[new Main_Category(1,"phones",""),new Main_Category(2,"labs","")];
   }
   onSubmit(data:any)
   {
