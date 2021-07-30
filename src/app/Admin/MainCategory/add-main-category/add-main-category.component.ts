@@ -14,9 +14,8 @@ export class AddMainCategoryComponent implements OnInit {
 
   main_Cats: Main_Category[] =[];
   selectedPhoto!: File;
-  url: string = 'http://localhost:9602/api/Main_Category';
   fileToUpload: File;
-  imageUrl: string | ArrayBuffer | null | undefined = "http://localhost:9602/Content/Imgs/Main_Category/default.jpg"
+  imageUrl: string | ArrayBuffer | null | undefined = "http://localhost:9602/Content/Imgs/Main_Categories/default.jpg"
 
   constructor(
     private _Main_catService: MainCategoryService,
@@ -30,7 +29,8 @@ export class AddMainCategoryComponent implements OnInit {
     data.imageFile = this.selectedPhoto;
     console.log(data);
     this._Main_catService.PostMain_Cat(data).subscribe(
-      (data) => {
+      data => {
+        console.log(data)
         this._router.navigate(["/admin/MainCategory"])
       },
       err => console.log(err)

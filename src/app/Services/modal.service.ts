@@ -9,7 +9,7 @@ export class ModalService {
 
   constructor() { }
 
-  private DeleteConfirmer = new Subject<void>();
+  private DeleteConfirmer = new Subject<boolean>();
 
 
   openPopUp(title: string, body: string, addAdmin?: boolean) {
@@ -25,11 +25,16 @@ export class ModalService {
   }
 
   DeleteConfirmed(){
-    this.DeleteConfirmer.next();
+    this.DeleteConfirmer.next(true);
+  }
+
+  DeleteDismissed(){
+    this.DeleteConfirmer.next(false);
   }
 
   DeleteObserver(){
     return this.DeleteConfirmer.asObservable();
   }
+
 
 }

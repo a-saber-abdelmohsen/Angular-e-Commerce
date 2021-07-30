@@ -1,7 +1,7 @@
 export class Store
 {
     constructor(
-        public ID: string,
+        public Id: string,
         public Username: string,
         public FirstName: string,
         public LastName: string,

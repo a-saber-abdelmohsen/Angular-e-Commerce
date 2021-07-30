@@ -49,6 +49,7 @@ import { AuthVendorGurd } from './Shared/AuthVendorGurd';
 import { ModalComponent } from './modal/modal.component';
 import { OrdersComponent } from './Admin/orders/orders.component';
 import { EditOrderComponent } from './Admin/orders/edit-order/edit-order.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -91,7 +92,8 @@ import { EditOrderComponent } from './Admin/orders/edit-order/edit-order.compone
     AdminComponent,
     ModalComponent,
     OrdersComponent,
-    EditOrderComponent
+    EditOrderComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

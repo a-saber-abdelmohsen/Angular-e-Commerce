@@ -61,7 +61,7 @@ export class DetailsComponent implements OnInit {
       return;
     }
 
-    this.ratingModel.Username != localStorage.getItem("userName");
+    this.ratingModel.Username = localStorage.getItem("userName")!;
     this.ratingModel.Product_Id = this.productdetails.Id;
     this._productdetailsService.enroll(this.ratingModel).
       subscribe(

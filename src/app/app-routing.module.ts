@@ -31,6 +31,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthVendorGurd } from './Shared/AuthVendorGurd';
 import { OrdersComponent } from './Admin/orders/orders.component';
 import { EditOrderComponent } from './Admin/orders/edit-order/edit-order.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'homePage', component: HomePageComponent, children: [
@@ -54,7 +55,6 @@ const routes: Routes = [
   //AuthPath
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent},
-
   //Admin
   {path: 'admin', component: AdminComponent,canActivate:[AuthAdminGurd], children: [
     { path: 'brand', component: BrandComponent},
@@ -79,7 +79,7 @@ const routes: Routes = [
   ]},
 
   { path: '', redirectTo: '/homePage', pathMatch: 'full' },
-  { path: '**', redirectTo: '/homePage', pathMatch: 'full' },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

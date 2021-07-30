@@ -11,8 +11,11 @@ import { Order } from 'src/app/Shared/Order';
 export class OrdersComponent implements OnInit {
 
   orders:Order[]=[];
- 
-  constructor(private _checkOut:CheckOutService, private router:Router) { 
+  
+  constructor(
+    private _checkOut:CheckOutService,
+    private router:Router
+  ) { 
     this._checkOut.GetAllOrders().subscribe((data)=>{
       this.orders=data;
       console.log(data);
@@ -22,7 +25,4 @@ export class OrdersComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-
-  
 }

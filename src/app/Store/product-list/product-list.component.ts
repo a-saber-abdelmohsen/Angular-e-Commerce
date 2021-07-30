@@ -14,6 +14,7 @@ import { Product } from 'src/app/Shared/Product';
 export class ProductListComponent implements OnInit {
 
 
+  title = "New Products";
   products: Product[] = [];
   brands: Brand[] = [];
   pageNumber = 1;
@@ -28,10 +29,12 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.actvRout.paramMap.subscribe((params:ParamMap)=>{
       if(params.get('Subid')!=null){
+        this.title = "Products"
         this.Subid=Number(params.get('Subid'));
         this._productService.GetProductsBySubCategory(this.Subid).subscribe(data=>{this.products=data})
       }
       else if(params.get('id') != null && params.get('term') != null){
+        this.title = "Search Results"
         let id: number = parseInt(params.get('id')!);
         let term: string = params.get('term')!;
         this._productService.SearchProducts(term, id).subscribe(d => {this.products = d; });
@@ -39,8 +42,8 @@ export class ProductListComponent implements OnInit {
 
       else if(params.get('id') != null){
         let id: string = params.get('id')!;
+        this.title = "Stores's Products"
         this._productService.GetProductsByStore(id).subscribe(d => {this.products = d; });
-       
       }
       else if(params.get('userWishID') != null){
         let id: string = params.get('userWishID')!;
@@ -54,7 +57,13 @@ export class ProductListComponent implements OnInit {
      
     });
 
-    this._brandService.GetAllBrand().subscribe(d => this.brands = d);
+    this._brandService.GetAllBrand().subscribe(
+      d =>{
+       this.brands = d;
+       if (this.brands.length > 5){
+        this.brands = this.brands.slice(0,5)
+       }
+      });
   }
 
   SeeMore(){

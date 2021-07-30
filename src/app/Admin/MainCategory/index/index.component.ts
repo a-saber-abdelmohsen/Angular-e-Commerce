@@ -47,8 +47,13 @@ export class IndexComponent implements OnInit {
     this._modalService.openPopUp("Delete","Are you Sure you want to Delete this main Category")
     this._modalService.DeleteObserver().subscribe(
       d => {
-        if (this.raisedModal){
-          this.deleteMain_category(this.idForDeleted);
+        if (d){
+          if (this.raisedModal){
+            this.deleteMain_category(this.idForDeleted);
+            this.raisedModal = false;
+          }
+        }
+        else{
           this.raisedModal = false;
         }
       }

@@ -18,7 +18,7 @@ export class StoreComponent implements OnInit {
 
   ngOnInit(): void {
     this._storeService.GetStores().subscribe(
-      d => this.stores = d
+      d => {this.stores = d; console.log(d)}
     )
   }
 

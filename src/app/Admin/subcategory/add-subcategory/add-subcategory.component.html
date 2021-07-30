@@ -47,14 +47,6 @@
             </div>
 
         </div>
-        <div>
-            <label for="Photo">Your Image</label>
-        </div>
-        <div class="form-group" id="imageContainer">
-            <img [src]="imageUrl" width="120px" height="120px">
-            <input type="file" id="Photo" name="Photo" (change)="fileHandle($event.target)"
-                accept="image/png, image/jpeg">
-        </div>
         <br>
         <input type="submit" class="btn btn-primary" [disabled]="subCatForm.form.invalid" value="Add Subcategory">
         <button class="btn btn-danger" style="margin-left: 2rem;" routerLink="/admin/subcategory">Back</button>

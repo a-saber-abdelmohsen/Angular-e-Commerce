@@ -17,14 +17,26 @@ export class HeighSaledPRoductListComponent implements OnInit {
     private _productService: ProductService,
     private _brandService: BrandService
     ) { 
-      this._productService.GetProducts().subscribe(data=>{
-      this.heighSaleProduct=data;
-      this.heighSaleProduct.sort((a,b)=>b.Sell_Count-a.Sell_Count)
+      this._productService.GetProducts().subscribe(
+        data=>{
+          this.heighSaleProduct=data;
+          if (this.heighSaleProduct.length > 4){
+            this.heighSaleProduct = this.heighSaleProduct.slice(0,4);
+          }
+          this.heighSaleProduct.sort((a,b)=>b.Sell_Count-a.Sell_Count)
     })
     }
 
   ngOnInit(): void {
-    this._brandService.GetAllBrand().subscribe(d => this.brands = d);
+    this._brandService.GetAllBrand().subscribe(
+      d => 
+      {
+        this.brands = d
+        if (this.brands.length > 5){
+          this.brands = this.brands.slice(0,5);
+        }
+      }
+    );
   }
 
 }

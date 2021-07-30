@@ -54,11 +54,16 @@ export class UsersComponent implements OnInit {
   ConfirmAdd(id: string) {
     this.raisedModal = true;
     this.idForAddAdmin = id;
-    this._modalService.openPopUp("Delete","Are you Sure you want to Make this User and Admin", true)
+    this._modalService.openPopUp("Add","Are you Sure you want to Make this User and Admin", true)
     this._modalService.DeleteObserver().subscribe(
       d => {
-        if (this.raisedModal){
-          this.MakeAdmin(this.idForAddAdmin);
+        if (d){
+          if (this.raisedModal){
+            this.MakeAdmin(this.idForAddAdmin);
+            this.raisedModal = false;
+          }
+        }
+        else{
           this.raisedModal = false;
         }
       }

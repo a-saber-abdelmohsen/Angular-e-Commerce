@@ -31,6 +31,9 @@ export class EditSubcategoryComponent implements OnInit {
     this._SubcategoryService.getSubcategoryById(this.id).subscribe((data)=>
     {
       this.subcategory=data;
+      if (this.subcategory.Parent_Id ==null){
+        this.subcategory.Parent_Id = 0;
+      }
       this.imageUrl += this.subcategory.Photo;
     });
     this._SubcategoryService.getAllSubcategories().subscribe((data)=>

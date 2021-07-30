@@ -19,4 +19,9 @@ export class ModalComponent implements OnInit {
   Confirmed(){
     this._modelService.DeleteConfirmed();
   }
+
+  Dismiss(){
+    this._modelService.DeleteDismissed();
+  }
 }
+

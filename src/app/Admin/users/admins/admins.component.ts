@@ -47,8 +47,13 @@ export class AdminsComponent implements OnInit {
     this._modalService.openPopUp("Delete","Are you Sure you want to Delete this Admin")
     this._modalService.DeleteObserver().subscribe(
       d => {
-        if (this.raisedModal){
-          this.DeleteAdmin(this.idForDeleted);
+        if (d){
+          if (this.raisedModal){
+            this.DeleteAdmin(this.idForDeleted);
+            this.raisedModal = false;
+          }
+        }
+        else{
           this.raisedModal = false;
         }
       }

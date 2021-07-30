@@ -28,6 +28,7 @@ export class UserHeaderComponent implements OnInit {
         this.userRgisterd = false;
       } else {
         this.userRgisterd = true;
+        this.userName = localStorage.getItem("userName")!;
       }
     })
   }

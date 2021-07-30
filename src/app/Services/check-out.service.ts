@@ -27,7 +27,7 @@ export class CheckOutService {
 
 
   GetUserOrders(userId: string): Observable<Order[]>{
-    return this._http.get<Order[]>(`${this.url}/${userId}`);
+    return this._http.get<Order[]>(`${this.url}/userOrders?id=${userId}`);
   }
 
   GetAllOrders(): Observable<Order[]> {

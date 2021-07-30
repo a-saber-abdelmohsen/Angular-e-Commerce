@@ -6,14 +6,14 @@
         <div id="imageContainer">
             <input type="file" name="imageFile" id="imageFile" ngModel accept="image/png, image/jpeg, image/jpg"
                 class="form-control" (change)="fileHandle($event.target)" />
-            <img src="http://localhost:9602/Content/Imgs/default.jpg" id="img" class="h-100 w-100" />
+            <img src="{{imageUrl}}" id="img" class="h-100 w-100" />
         </div>
 
         <div class="form-group">
             <label>Main Category Name</label>
             <input name="Name" required type="text" ngModel class="form-control" />
         </div>
-        <input type="submit" class="btn btn-primary" [disabled]="main_CatForm.form.invalid" value="Add MainCategory" /> 
+        <input type="submit" class="btn btn-primary" value="Add MainCategory" /> 
         <button class="btn btn-danger" style="margin-left: 2rem;" routerLink="/admin/MainCategory">Back</button>
     </form>
 </div>
