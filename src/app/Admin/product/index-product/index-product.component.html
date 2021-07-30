@@ -58,28 +58,19 @@
             <td>{{product.Brand.Name}}</td>
             <td>{{product.Sub_Category.Name}}</td>
 
-            <!-- <td><img src="http://localhost:9602/Content/Imgs/Sub_Categories/{{subcat.Photo}}" width="100px" height="100px"></td> -->
-            <td>
-              <a class="btn btn-primary" routerLink="/admin/product/edit/{{product.Id}}">Edit Product</a>
-            </td>
-            <td>
-              <a class="btn btn-danger" (click)="deleteProduct(product.Id)">Delete Product</a>
-            </td>
-          </tr>
-        </tbody>
+          
+
+      <!-- <td><img src="http://localhost:9602/Content/Imgs/Sub_Categories/{{subcat.Photo}}" width="100px" height="100px"></td> -->
+      <td>
+        <a class="btn btn-primary" routerLink="/admin/product/edit/{{product.Id}}">Edit Product</a>
+      </td>
+      <td>
+        <a class="btn btn-danger" (click)="openPopUp(product.Id)">Delete Product</a>
+      </td>
+      </tr>
+      </tbody>
       </table>
 
-              <!-- <td><img src="http://localhost:9602/Content/Imgs/Sub_Categories/{{subcat.Photo}}" width="100px" height="100px"></td> -->
-              <td>
-                <a class="btn btn-primary" routerLink="/admin/product/edit/{{product.Id}}">Edit Product</a>
-              </td>
-              <td>
-                <a class="btn btn-danger" (click)="openPopUp(product.Id)">Delete Product</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
     </div>
   </div>
 </div>
