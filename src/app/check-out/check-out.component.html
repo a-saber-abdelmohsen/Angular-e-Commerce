@@ -1,8 +1,13 @@
 
 
 <div class="container">
+    <br>
+    <app-cart ></app-cart>
+    <br>
+    <hr>
     <form #CheckOutForm="ngForm" novalidate (ngSubmit)="onSubmit(CheckOutForm.value)" >
    
+        
 
         <div class="form-group">
             <label>Total Price</label>

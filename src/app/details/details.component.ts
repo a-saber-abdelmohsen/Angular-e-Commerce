@@ -29,10 +29,12 @@ export class DetailsComponent implements OnInit {
   error: string = "";
   ratingModel = new Rating2(0, "", new Date('12/1/2020'), "", 0, "");
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((parms: ParamMap) => {
-      this.id = parseInt(parms.get('id')!);
+    this.activatedRoute.params.subscribe((parms) => {
+      this.id = parseInt(parms['id']);
+      console.log(this.id);
+      this._productdetailsService.GetProductDetails(this.id).subscribe(d => { this.productdetails = d; console.log(d) })
     });
-    this._productdetailsService.GetProductDetails(this.id).subscribe(d => { this.productdetails = d; console.log(d) })
+    
   }
   GetAvgRating(ratings: Rating[]): Number {
     let sum = 0;
@@ -45,6 +47,8 @@ export class DetailsComponent implements OnInit {
 
     return sum / ratings.length
   }
+
+  
   onSubmit() {
     //console.log(this.userModel);
     //alert("inside");
