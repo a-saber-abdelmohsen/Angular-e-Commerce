@@ -41,6 +41,7 @@ export class CheckOutComponent implements OnInit {
     this._cartService.CartCount().subscribe((d) => (this.cartCount = d));
     this._cartService.UpdateCartCount();
     this.cartContent = this._cartService.GetCartContent();
+    
   }
 
   UpdateTotal(): void {
@@ -56,19 +57,20 @@ export class CheckOutComponent implements OnInit {
 
   onSubmit(data: CheckOutForm) {
     data.Products = this.cartContent;
+  
     if (localStorage.getItem('userId') != null)
       data.User_Id = localStorage.getItem('userId')!;
     else
       this._router.navigate(['/login'])
     console.log(data);
+    
     this._checkOutService.PostOrder(data).subscribe(
       (data) => this._router.navigate(['/homePage']),
-      (err) => console.log(err)
+      (err) => console.log(err),
+      
     );
 
     // this._http.post(this.url,data).subscribe((result)=>{console.warn(result)})
   }
-  emptyCart() {
-    this._cartService.EmptyCart();
-  }
+ 
 }

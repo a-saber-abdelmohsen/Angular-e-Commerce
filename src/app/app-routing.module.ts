@@ -29,6 +29,8 @@ import { AdminsComponent } from './Admin/users/admins/admins.component';
 import { VendorsComponent } from './Admin/users/vendors/vendors.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthVendorGurd } from './Shared/AuthVendorGurd';
+import { OrdersComponent } from './Admin/orders/orders.component';
+import { EditOrderComponent } from './Admin/orders/edit-order/edit-order.component';
 
 const routes: Routes = [
   { path: 'homePage', component: HomePageComponent, children: [
@@ -64,6 +66,8 @@ const routes: Routes = [
     { path: 'subcategory', component: SubcategoryComponent},
     { path:'subAdd',component:AddSubcategoryComponent},
     { path:'subEdit/:id',component:EditSubcategoryComponent},
+    { path: 'orders', component: OrdersComponent},
+    { path: 'orders/Edit/:id', component: EditOrderComponent},
     { path: 'users', component: UsersComponent, children:[
       { path:'admins',component: AdminsComponent },
       { path:'vendors',component: VendorsComponent },

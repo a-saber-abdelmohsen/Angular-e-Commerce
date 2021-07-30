@@ -1,0 +1,53 @@
+<router-outlet #Outlet="outlet"></router-outlet>
+
+<div class="container" [hidden]="Outlet.isActivated">
+  <br> 
+  <div class="card">
+    
+      <div class="card-body">
+      
+        <div class="table-responsive table-border">
+          <table class="table ">
+            <thead class=" text-primary">
+             
+              <th>
+                user Name
+              </th>
+              <th>
+                Address
+              </th>
+              <th>
+                payment
+              </th>
+              <th>
+                status
+              </th>
+              <th>
+                total price
+              </th>
+              <th>
+                order date
+              </th>
+           
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orders">
+                   
+                    <td>{{order.UserName}}</td>
+                    <td>{{order.Address}}</td>
+                    <td>{{order.Payment}}</td>
+                    <td>{{order.Status}}</td>
+                    <td>{{order.Total_Price}}</td>
+                    <td>{{order.Created_at}}</td>
+                    
+                    <td>
+                      <a class="btn btn-primary" routerLink="/admin/orders/Edit/{{order.Id}}" >Edit order status</a>
+                    </td>
+                    
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>

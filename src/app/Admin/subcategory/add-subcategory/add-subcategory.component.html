@@ -15,16 +15,16 @@
         <div class="form-group">
             <label for="Name">Subcategory Name :</label>
             <input name="Namee" id="Name" required width="50%" type="text" #Name="ngModel"
-                [class.invalid]="Name.invalid && Name.touched" [(ngModel)]="subcategory.Name" class="form-control" />
+                [class.is-invalid]="Name.invalid && Name.touched" [(ngModel)]="subcategory.Name" class="form-control" />
             <div *ngIf="Name.touched && Name.invalid">
                 <small class="text-danger" *ngIf="Name.errors?.required">Name is required</small>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="Cat_Id">Main category :</label><br>
+            <label for="Cat_Id">Main Subcategory Name :</label><br>
             <select name="Cat_Id" class="form-control" [(ngModel)]="subcategory.Cat_Id" id="Cat_Id" #Cat_Id="ngModel"
-                [class.invalid]="Cat_Id.invalid && Cat_Id.touched" required>
+                [class.is-invalid]="Cat_Id.invalid && Cat_Id.touched" required>
                 <option *ngFor="let main of maincategories" value="{{main.Id}}">{{main.Name}}</option>
             </select>
             <div *ngIf="Cat_Id.touched && Cat_Id.invalid">
@@ -37,7 +37,7 @@
         <div class="form-group">
             <label for="Parent_Id">Parent Subcategory Name :</label><br>
             <select name="Parent_Id" class="form-control" [(ngModel)]="subcategory.Parent_Id" Id="Parent_Id"
-                #Parent_Id="ngModel" [class.invalid]="Parent_Id.invalid && Parent_Id.touched" required>
+                #Parent_Id="ngModel" [class.is-invalid]="Parent_Id.invalid && Parent_Id.touched" required>
                 <option value="0">Basic Sub Category</option>
                 <option *ngFor="let sub of subcategories" value="{{sub.Id}}">{{sub.Name}}</option>
             </select>
@@ -47,7 +47,14 @@
             </div>
 
         </div>
-
+        <div>
+            <label for="Photo">Your Image</label>
+        </div>
+        <div class="form-group" id="imageContainer">
+            <img [src]="imageUrl" width="120px" height="120px">
+            <input type="file" id="Photo" name="Photo" (change)="fileHandle($event.target)"
+                accept="image/png, image/jpeg">
+        </div>
         <br>
         <input type="submit" class="btn btn-primary" [disabled]="subCatForm.form.invalid" value="Add Subcategory">
         <button class="btn btn-danger" style="margin-left: 2rem;" routerLink="/admin/subcategory">Back</button>

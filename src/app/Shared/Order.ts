@@ -1,3 +1,5 @@
+
+
 export class Order {
     constructor(
         public Id: number,
@@ -6,6 +8,9 @@ export class Order {
         public Address: string,
         public Created_at: Date,
         public User_Id: string,
-        public Payment_Id: number
+        public Payment_Id: number,
+        public UserName: string,
+        public Payment: string
+        
     ){}
 }
