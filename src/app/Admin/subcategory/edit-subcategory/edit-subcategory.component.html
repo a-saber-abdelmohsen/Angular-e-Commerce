@@ -28,7 +28,7 @@
     <div class="form-group">
       <label for="Parent_Id">Parent Subcategory Name :</label><br>
       <select name="Parent_Id" [(ngModel)]="subcategory.Parent_Id" Id="Parent_Id" #Parent_Id="ngModel"
-        class="form-control" [class.invalid]="Parent_Id.invalid && Parent_Id.touched" required>
+        class="form-control" [class.is-invalid]="Parent_Id.invalid && Parent_Id.touched" required>
         <option value="0" [class.selected]="null == subcategory.Id">Basic Sub Category</option>
         <option *ngFor="let sub of subcategories" value="{{sub.Id}}" [class.selected]="sub.Id === subcategory.Id">
           {{sub.Name}}</option>
@@ -43,7 +43,7 @@
       <label for="Photo">Image</label>
     </div>
     <div class="form-group" id="imageContainer">
-      <img src="{{imageUrl}}"  width="120px" height="120px">
+      <img src="{{imageUrl}}" width="120px" height="120px">
       <input type="file" id="Photo" name="Photo" (change)="fileHandle($event.target)" accept="image/png, image/jpeg">
     </div>
     <br>
