@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
   fileToUpload!: File;
   isEdit: boolean = false;
   user: User;
+  register = true;
 
   constructor(
     private _serviceLogin: LoginService,
@@ -40,6 +41,7 @@ export class RegisterComponent implements OnInit {
           this.registerData = new Register(d.FirstName, d.LastName, d.Username, null, d.Email, '', '', '', d.Address);
           this.isEdit = true;
           this.imageUrl = `http://localhost:9602/Content/Imgs/Users/${d.Photo}`
+          this.register = false;
         },
         err => {
 

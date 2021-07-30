@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from '../Services/cart.service';
 import { LoginService } from '../Services/login.service';
+import { WishlistService } from '../Services/wishlist.service';
 
 @Component({
   selector: 'app-user-header',
@@ -15,7 +16,8 @@ export class UserHeaderComponent implements OnInit {
   constructor(
     private router: Router,
     private loginService: LoginService,
-    private cartService: CartService
+    private cartService: CartService,
+    private _wishlist: WishlistService
   ) {
     if (localStorage.getItem("userId") == null) {
       this.userRgisterd = false;
@@ -26,9 +28,11 @@ export class UserHeaderComponent implements OnInit {
     this.loginService.currentMessage2.subscribe(mess => {
       if (localStorage.getItem("userId") == null) {
         this.userRgisterd = false;
+        this._wishlist.changeMessage('');
       } else {
         this.userRgisterd = true;
         this.userName = localStorage.getItem("userName")!;
+        this._wishlist.changeMessage('');
       }
     })
   }
@@ -44,6 +48,7 @@ export class UserHeaderComponent implements OnInit {
       this.loginService.changeMessage('');
       this.router.navigate(['/homePage']);
       this.cartService.EmptyCart();
+      this._wishlist.changeMessage('');
     }
   }
 }

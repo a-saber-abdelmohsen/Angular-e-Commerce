@@ -51,6 +51,7 @@ export class HeaderComponent implements OnInit {
         this._wishListService
           .GetWishListForThisUser(this.userid!)
           .subscribe((data) => {
+            console.log(data)
             this.wishListCount = data.length;
           });
       });
