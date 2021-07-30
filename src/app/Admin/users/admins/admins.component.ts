@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalService } from 'src/app/Services/modal.service';
 import { UsersService } from 'src/app/Services/users.service';
 import { User } from 'src/app/Shared/User';
 
@@ -10,10 +11,14 @@ import { User } from 'src/app/Shared/User';
 export class AdminsComponent implements OnInit {
 
 
-  Admins: User[]
+  Admins: User[];
+  raisedModal = false;
+  idForDeleted = "";
+
 
   constructor(
-    private _usersService: UsersService
+    private _usersService: UsersService,
+    private _modalService: ModalService
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +37,20 @@ export class AdminsComponent implements OnInit {
       },
       err => {
         
+      }
+    )
+  }
+
+  ConfirmDelete(id: string) {
+    this.raisedModal = true;
+    this.idForDeleted = id;
+    this._modalService.openPopUp("Delete","Are you Sure you want to Delete this Admin")
+    this._modalService.DeleteObserver().subscribe(
+      d => {
+        if (this.raisedModal){
+          this.DeleteAdmin(this.idForDeleted);
+          this.raisedModal = false;
+        }
       }
     )
   }

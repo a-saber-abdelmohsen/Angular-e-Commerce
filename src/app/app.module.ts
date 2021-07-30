@@ -46,6 +46,7 @@ import { AdminsComponent } from './Admin/users/admins/admins.component';
 import { VendorsComponent } from './Admin/users/vendors/vendors.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthVendorGurd } from './Shared/AuthVendorGurd';
+import { ModalComponent } from './modal/modal.component';
 
 
 @NgModule({
@@ -85,7 +86,8 @@ import { AuthVendorGurd } from './Shared/AuthVendorGurd';
     AddProductComponent,
     IndexProductComponent,
     EditProdcutComponent,
-    AdminComponent
+    AdminComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

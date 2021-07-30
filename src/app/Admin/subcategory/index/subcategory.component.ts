@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalService } from 'src/app/Services/modal.service';
 import { SubcategoryService } from 'src/app/Services/subcategory.service';
 import { SubCategory } from 'src/app/Shared/SubCategory';
 
@@ -11,7 +12,14 @@ import { SubCategory } from 'src/app/Shared/SubCategory';
 export class SubcategoryComponent implements OnInit {
   
   subcategories:SubCategory[]=[]
-  constructor(private _SubcategoryService:SubcategoryService, private router:Router) { }
+  raisedModal = false;
+  idForDeleted = 0;
+
+  constructor(
+    private _SubcategoryService:SubcategoryService,
+    private router:Router,
+    private _modalService: ModalService
+  ) { }
   
 
   ngOnInit(): void {
@@ -23,11 +31,24 @@ export class SubcategoryComponent implements OnInit {
   deleteSubcategory(id: any)
   {
     console.warn(id);
-  this._SubcategoryService.deleteSubcategory(id).subscribe(data=>{
-   this.subcategories=this.subcategories.filter(item=>item.Id !=id);
+    this._SubcategoryService.deleteSubcategory(id).subscribe(data=>{
+    this.subcategories=this.subcategories.filter(item=>item.Id !=id);
     console.log(data)
 
   });
   }
 
+  ConfirmDelete(id: number) {
+    this.raisedModal = true;
+    this.idForDeleted = id;
+    this._modalService.openPopUp("Delete","Are you Sure you want to Delete this Sub Category")
+    this._modalService.DeleteObserver().subscribe(
+      d => {
+        if (this.raisedModal){
+          this.deleteSubcategory(this.idForDeleted);
+          this.raisedModal = false;
+        }
+      }
+    )
+  }
 }

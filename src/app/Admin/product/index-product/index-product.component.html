@@ -58,44 +58,19 @@
             <td>{{product.Brand.Name}}</td>
             <td>{{product.Sub_Category.Name}}</td>
 
-          
 
-      <!-- <td><img src="http://localhost:9602/Content/Imgs/Sub_Categories/{{subcat.Photo}}" width="100px" height="100px"></td> -->
-      <td>
-        <a class="btn btn-primary" routerLink="/admin/product/edit/{{product.Id}}">Edit Product</a>
-      </td>
-      <td>
-        <a class="btn btn-danger" (click)="openPopUp(product.Id)">Delete Product</a>
-      </td>
-      </tr>
-      </tbody>
+
+            <!-- <td><img src="http://localhost:9602/Content/Imgs/Sub_Categories/{{subcat.Photo}}" width="100px" height="100px"></td> -->
+            <td>
+              <a class="btn btn-primary" routerLink="/admin/product/edit/{{product.Id}}">Edit Product</a>
+            </td>
+            <td>
+              <a class="btn btn-danger" (click)="openPopUp(product.Id)">Delete Product</a>
+            </td>
+          </tr>
+        </tbody>
       </table>
 
     </div>
-  </div>
-</div>
-
-
-
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <p>Are You Sure To Delete This Product</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger" (click)="funFromPopUp()" data-dismiss="modal">Delete</button>
-      </div>
-    </div>
-
   </div>
 </div>

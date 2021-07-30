@@ -18,7 +18,7 @@
             <tr *ngFor="let user of Admins">
                 <td>{{user.FirstName +" "+ user.LastName | titlecase}}</td>
                 <td>{{user.Email}}</td>
-                <td><button class="btn btn-danger" style="margin-left: 2rem;" (click)="DeleteAdmin(user.Id)">Delete Admin</button></td>
+                <td><button class="btn btn-danger" style="margin-left: 2rem;" (click)="ConfirmDelete(user.Id)">Delete Admin</button></td>
             </tr>
         </tbody>
     </table>

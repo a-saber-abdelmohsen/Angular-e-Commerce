@@ -15,6 +15,9 @@ export class AddMainCategoryComponent implements OnInit {
   main_Cats: Main_Category[] =[];
   selectedPhoto!: File;
   url: string = 'http://localhost:9602/api/Main_Category';
+  fileToUpload: File;
+  imageUrl: string | ArrayBuffer | null | undefined = "http://localhost:9602/Content/Imgs/Main_Category/default.jpg"
+
   constructor(
     private _Main_catService: MainCategoryService,
     private _imageUploader: ImageUploaderService,
@@ -27,23 +30,22 @@ export class AddMainCategoryComponent implements OnInit {
     data.imageFile = this.selectedPhoto;
     console.log(data);
     this._Main_catService.PostMain_Cat(data).subscribe(
-      (data) => this._router.navigate(["/admin/MainCategory"]),
+      (data) => {
+        this._router.navigate(["/admin/MainCategory"])
+      },
       err => console.log(err)
     )
     
   }
 
-  UploadImage(): void {
-    let input = document.getElementById('imageFile')! as HTMLInputElement;
-    if (input.files && input.files[0]) {
-      this.selectedPhoto = input.files[0];
-      let image = input.files[0];
-      this._imageUploader
-        .Upload(image)
-        .subscribe(
-          (d) => ((document.getElementById('img')! as HTMLImageElement).src = d)
-        );
-    }
-  }
+  fileHandle(file: any) {
+    this.fileToUpload = file.files.item(0)
 
+    var filereader = new FileReader();
+    filereader.onload = (event) => {
+      this.imageUrl = event.target?.result;
+
+    }
+    filereader.readAsDataURL(this.fileToUpload)
+  }
 }

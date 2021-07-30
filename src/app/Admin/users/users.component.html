@@ -22,7 +22,7 @@
             <tr *ngFor="let user of Users">
                 <td>{{user.FirstName +" "+ user.LastName | titlecase}}</td>
                 <td>{{user.Email}}</td>
-                <td><button class="btn btn-primary" style="margin-left: 2rem;" (click)="MakeAdmin(user.Id)">Make Admin</button></td>
+                <td><button class="btn btn-primary" style="margin-left: 2rem;" (click)="ConfirmAdd(user.Id)">Make Admin</button></td>
             </tr>
             <!-- and so on... -->
         </tbody>

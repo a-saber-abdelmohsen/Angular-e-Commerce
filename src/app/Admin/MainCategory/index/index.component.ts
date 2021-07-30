@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MainCategoryService } from 'src/app/Services/main-category.service';
+import { ModalService } from 'src/app/Services/modal.service';
 import { Main_Category } from 'src/app/Shared/Main_Category';
 
 @Component({
@@ -11,14 +12,20 @@ import { Main_Category } from 'src/app/Shared/Main_Category';
 export class IndexComponent implements OnInit {
 
   main_Cat:Main_Category[]=[];
+  raisedModal = false;
+  idForDeleted = 0;
  
-  constructor(private _Main_CatService:MainCategoryService, private router:Router) {
+  constructor(
+    private _Main_CatService:MainCategoryService,
+    private router:Router,
+    private _modalService: ModalService
+  ) {
     this._Main_CatService.GetAllMain_cat().subscribe((data)=>{
       this.main_Cat=data;
       console.log(data);
      
     })
-   }
+  }
 
   ngOnInit(): void {
   
@@ -34,4 +41,17 @@ export class IndexComponent implements OnInit {
   });
   }
 
+  ConfirmDelete(id: number) {
+    this.raisedModal = true;
+    this.idForDeleted = id;
+    this._modalService.openPopUp("Delete","Are you Sure you want to Delete this main Category")
+    this._modalService.DeleteObserver().subscribe(
+      d => {
+        if (this.raisedModal){
+          this.deleteMain_category(this.idForDeleted);
+          this.raisedModal = false;
+        }
+      }
+    )
+  }
 }
