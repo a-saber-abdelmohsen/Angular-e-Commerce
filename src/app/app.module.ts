@@ -46,6 +46,8 @@ import { AdminsComponent } from './Admin/users/admins/admins.component';
 import { VendorsComponent } from './Admin/users/vendors/vendors.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthVendorGurd } from './Shared/AuthVendorGurd';
+import { OrdersComponent } from './Admin/orders/orders.component';
+import { EditOrderComponent } from './Admin/orders/edit-order/edit-order.component';
 
 
 @NgModule({
@@ -85,7 +87,9 @@ import { AuthVendorGurd } from './Shared/AuthVendorGurd';
     AddProductComponent,
     IndexProductComponent,
     EditProdcutComponent,
-    AdminComponent
+    AdminComponent,
+    OrdersComponent,
+    EditOrderComponent
   ],
   imports: [
     BrowserModule,
