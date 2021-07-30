@@ -1,7 +1,16 @@
 <div class="container">
     <h2>Add New Subcategory</h2>
-    <form #userPost="ngForm" novalidate (ngSubmit)="onSubmit(userPost.value)" enctype='multipart/form-data'>
-
+    <br>
+    <form #subCatForm="ngForm" novalidate (ngSubmit)="onSubmit(subCatForm.value)" enctype='multipart/form-data'>
+        
+        <div>
+            <label for="Photo">Image</label>
+        </div>
+        <div class="form-group" id="imageContainer">
+            <img [src]="imageUrl" width="120px" height="120px">
+            <input type="file" id="Photo" name="Photo" (change)="fileHandle($event.target)"
+                accept="image/png, image/jpeg">
+        </div>
 
         <div class="form-group">
             <label for="Name">Subcategory Name :</label>
@@ -47,7 +56,7 @@
                 accept="image/png, image/jpeg">
         </div>
         <br>
-        <input type="submit" class="btn btn-primary" value="Add Subcategory">
+        <input type="submit" class="btn btn-primary" [disabled]="subCatForm.form.invalid" value="Add Subcategory">
         <button class="btn btn-danger" style="margin-left: 2rem;" routerLink="/admin/subcategory">Back</button>
 
 

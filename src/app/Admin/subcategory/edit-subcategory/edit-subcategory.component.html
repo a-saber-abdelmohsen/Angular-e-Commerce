@@ -1,12 +1,20 @@
 <div class="container">
   <h2>Edit Subcategory</h2>
-  <form #userPost="ngForm" novalidate (ngSubmit)="onSubmit(userPost.value)" enctype='multipart/form-data'>
+  <br>
+  <form #subCatForm="ngForm" novalidate (ngSubmit)="onSubmit(subCatForm.value)" enctype='multipart/form-data'>
 
+    <div>
+      <label for="Photo">Image</label>
+    </div>
+    <div class="form-group" id="imageContainer">
+      <img src="{{imageUrl}}"  width="120px" height="120px">
+      <input type="file" id="Photo" name="Photo" (change)="fileHandle($event.target)" accept="image/png, image/jpeg">
+    </div>
 
     <div class="form-group">
       <label for="Name">Subcategory Name :</label>
       <input name="Namee" id="Name" required width="50%" type="text" #Name="ngModel"
-        [class.is-invalid]="Name.invalid && Name.touched" [(ngModel)]="subcategory.Name" class="form-control" />
+        [class.invalid]="Name.invalid && Name.touched" [(ngModel)]="subcategory.Name" class="form-control" />
       <div *ngIf="Name.touched && Name.invalid">
         <small class="text-danger" *ngIf="Name.errors?.required">Name is required</small>
       </div>
@@ -15,7 +23,7 @@
     <div class="form-group">
       <label for="Cat_Id">Main Subcategory Name :</label><br>
       <select name="Cat_Id" [(ngModel)]="subcategory.Cat_Id" id="Cat_Id" #Cat_Id="ngModel"
-        [class.is-invalid]="Cat_Id.invalid && Cat_Id.touched" class="form-control" required>
+        [class.invalid]="Cat_Id.invalid && Cat_Id.touched" class="form-control" required>
         <option *ngFor="let main of maincategories" value="{{main.Id}}">{{main.Name}}</option>
       </select>
       <div *ngIf="Cat_Id.touched && Cat_Id.invalid">
@@ -47,7 +55,7 @@
       <input type="file" id="Photo" name="Photo" (change)="fileHandle($event.target)" accept="image/png, image/jpeg">
     </div>
     <br>
-    <input type="submit" class="btn btn-primary" value="Edit Subcategory">
+    <input type="submit" class="btn btn-primary" [disabled]="subCatForm.form.invalid" value="Edit Subcategory">
     <button class="btn btn-danger" style="margin-left: 2rem;" routerLink="/admin/subcategory">Back</button>
 
 
