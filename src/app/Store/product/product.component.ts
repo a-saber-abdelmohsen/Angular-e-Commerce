@@ -32,8 +32,6 @@ export class ProductComponent implements OnInit {
       this._wishListService
         .CheckIfWishListExistForThisUserAndProduct(this.userid, this.product.Id)
         .subscribe((data) => {
-          //this.flagAlreadyAdded = data;
-
           if (data) {
             this.ClassRed = true;
           } else this.ClassRed = false;
@@ -66,7 +64,7 @@ export class ProductComponent implements OnInit {
           .subscribe((data) => {
             this.ClassRed = false;
             this._wishListService.changeMessage('');
-            alert("deleted")
+           
           });
       } else {
         this._wishListService
@@ -75,7 +73,7 @@ export class ProductComponent implements OnInit {
             this.result = data;
             this.ClassRed = true;
             this._wishListService.changeMessage('');
-            alert("added")
+            
           });
       }
     }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/Services/product.service';
 import { Product } from 'src/app/Shared/Product';
-
+declare var $:any;
 @Component({
   selector: 'app-index-product',
   templateUrl: './index-product.component.html',
@@ -11,6 +11,7 @@ import { Product } from 'src/app/Shared/Product';
 export class IndexProductComponent implements OnInit {
 
   products:Product[]
+  idForDeleted=0
   constructor(private productService:ProductService,private router:Router) { }
 
   ngOnInit(): void {
@@ -21,8 +22,16 @@ export class IndexProductComponent implements OnInit {
   deleteProduct(id:number){
     this.productService.deleteProduct(id).subscribe(data=>{
       console.log(data)
-      this.products=this.products.filter(item=>{item.Id!=id})
-      this.router.navigate(['/product']);
+      this.products=this.products.filter(item=> item.Id != id)
+      this.router.navigate(['/admin/product']);
     },error=>{console.log(error.error)});
+  }
+  openPopUp(id:number){
+this.idForDeleted=id;
+$("#myModal").modal()
+
+  }
+  funFromPopUp(){
+    this.deleteProduct(this.idForDeleted);
   }
 }
