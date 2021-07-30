@@ -41,7 +41,7 @@ export class UserHeaderComponent implements OnInit {
       localStorage.removeItem("userId");
       localStorage.removeItem("role");
       this.loginService.changeMessage('');
-      this.router.navigate(['/login']);
+      this.router.navigate(['/homePage']);
       this.cartService.EmptyCart();
     }
   }
