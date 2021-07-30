@@ -20,7 +20,7 @@ export class EditProdcutComponent implements OnInit {
   Brands: Brand[]
   id: number = 0
   Vendor_id = localStorage.getItem("userId")
-  imageUrl: any = "./assets/images/def.png"
+  imageUrl: any ="http://localhost:9602/Content/Imgs/Products/"
   fileToUpload!: File
   errors: string = ""
 
@@ -29,7 +29,7 @@ export class EditProdcutComponent implements OnInit {
       this.productservice.GetProductById(Number(params.get('id'))).subscribe(data => {
         this.id = Number(params.get('id'))
         this.productData = data
-        console.log(data);
+       this.imageUrl+=this.productData.Photo
       }, error => { this.errors = error.error.error_description; console.log(error.error) }
 
       )
