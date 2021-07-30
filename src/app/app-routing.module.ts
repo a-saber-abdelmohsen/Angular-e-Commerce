@@ -28,6 +28,7 @@ import { UsersComponent } from './Admin/users/users.component';
 import { AdminsComponent } from './Admin/users/admins/admins.component';
 import { VendorsComponent } from './Admin/users/vendors/vendors.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthVendorGurd } from './Shared/AuthVendorGurd';
 
 const routes: Routes = [
   { path: 'homePage', component: HomePageComponent, children: [
@@ -37,11 +38,13 @@ const routes: Routes = [
     { path: 'productList', component: ProductListComponent },
     { path: 'Cart', component: CartDetailsComponent },
     { path: 'wishlist', component: WishlistDetailsComponent },
-    
+    { path: 'product/add',component:AddProductComponent, canActivate:[AuthVendorGurd]},
+    { path: 'product/edit/:id',component:EditProdcutComponent, canActivate:[AuthVendorGurd]},
     { path: 'profile', component: ProfileComponent},
-    { path: 'profile/edit/:id', component: RegisterComponent}
+    { path: 'profile/edit/:id', component: RegisterComponent},
+    { path: 'CheckOut', component: CheckOutComponent }
   ]},
-  { path: 'homePage/CheckOut', component: CheckOutComponent },
+  
  
 
 
@@ -52,32 +55,25 @@ const routes: Routes = [
 
   //Admin
   {path: 'admin', component: AdminComponent,canActivate:[AuthAdminGurd], children: [
-    { path: 'brand', component: BrandComponent , children: [
-      { path: 'Add', component: AddBrandComponent },
-      { path: 'Edit/:id', component: EditBrandComponent }
-    ]},
-    { path: 'MainCategory', component: IndexComponent, children: [
-      { path: 'Add', component: AddMainCategoryComponent },
-      { path: 'Edit/:id', component: EditMainCategoryComponent },
-    ]},
+    { path: 'brand', component: BrandComponent},
+    { path: 'brand/Add', component: AddBrandComponent },
+    { path: 'brand/Edit/:id', component: EditBrandComponent },
+    { path: 'MainCategory', component: IndexComponent},
+    { path: 'MainCategory/Add', component: AddMainCategoryComponent },
+    { path: 'MainCategory/Edit/:id', component: EditMainCategoryComponent },
     { path: 'subcategory', component: SubcategoryComponent},
     { path:'subAdd',component:AddSubcategoryComponent},
     { path:'subEdit/:id',component:EditSubcategoryComponent},
     { path: 'users', component: UsersComponent, children:[
       { path:'admins',component: AdminsComponent },
       { path:'vendors',component: VendorsComponent },
-    ]}
-     //Product
-  ,
-
+    ]},
   //Product
-  {path:'product',component:IndexProductComponent},
-  {path:'product/add',component:AddProductComponent},
-  {path:'product/edit/:id',component:EditProdcutComponent},
+    {path:'product',component:IndexProductComponent},
+    {path:'product/add',component:AddProductComponent},
+    {path:'product/edit/:id',component:EditProdcutComponent},
   ]},
 
-
- 
   { path: '', redirectTo: '/homePage', pathMatch: 'full' },
   { path: '**', redirectTo: '/homePage', pathMatch: 'full' },
 ];

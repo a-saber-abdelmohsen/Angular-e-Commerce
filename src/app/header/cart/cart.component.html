@@ -7,7 +7,6 @@
         <h5>TOTAL: {{ total | currency:'$' }}</h5>
     </div>
     <div class="cart-btns">
-        <a href="#">View Cart</a>
-        <a routerLink="/homePage/CheckOut">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+        <a (click)="GoToChechOut()" class="w-100">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
     </div>
 </div>

@@ -49,7 +49,7 @@
                  
                  </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" hidden>
                 <label for="Vendor_User_id">Vendor ID :</label>
                 <input type="text" class="form-control" id="Vendor_User_id" name="Vendor_User_id" [class.is-invalid]="Vendor_User_id.invalid &&Vendor_User_id.touched" [(ngModel)]="productData.Vendor_User_id"
                  #Vendor_User_id="ngModel" required >
@@ -77,10 +77,11 @@
           
          
            <div>
-               <img [src]="imageUrl" width="120px" height="120px">
+            <label for="photo">Product Image</label>
            </div>
-          <div class="form-group">
-            <label for="photo">Your Image</label>
+          <div class="form-group" id="imageContainer">
+            <img [src]="imageUrl" width="120px" height="120px">
+            
             <input type="file"
             id="avatar" name="avatar"  (change)="fileHandle($event.target)"
             accept="image/png, image/jpeg">

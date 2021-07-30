@@ -18,6 +18,14 @@ export class LoaderInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     this._loaderService.StartLoading()
+    let token = localStorage.getItem("access_token");
+    if (token) {
+      request = request.clone({
+        setHeaders: {
+          'Authorization': `bearer ${token}`
+        }
+      });
+    }
 
     return next.handle(request).pipe(
       finalize(

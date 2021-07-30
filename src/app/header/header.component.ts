@@ -42,14 +42,19 @@ export class HeaderComponent implements OnInit {
         .GetWishListForThisUser(this.userid)
         .subscribe((data) => {
           this.wishListCount = data.length;
-          alert(this.userid)
         });
+    }
+
+    
+    if (this.userid != null) {
       this._wishListService.currentMessage.subscribe((message) => {
         this._wishListService
           .GetWishListForThisUser(this.userid!)
           .subscribe((data) => {
             this.wishListCount = data.length;
+            alert("GetWishListForThisUser")
           });
+          alert("currentMessage")
       });
     }
   }

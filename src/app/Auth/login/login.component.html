@@ -6,7 +6,7 @@
       <form action="/" #userForms="ngForm" name="userForm" novalidate (ngSubmit)="onSubmit()">
    
         <div class="form-group">
-          <label for="email">Email address:</label>
+          <label for="email">Username:</label>
           <input type="text" class="form-control" id="email" name="email" [class.is-invalid]="email.invalid &&email.touched" [(ngModel)]="loginData.username"
            #email="ngModel" required >
        

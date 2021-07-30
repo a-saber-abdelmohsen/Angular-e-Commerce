@@ -45,6 +45,7 @@ import { UsersComponent } from './Admin/users/users.component';
 import { AdminsComponent } from './Admin/users/admins/admins.component';
 import { VendorsComponent } from './Admin/users/vendors/vendors.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthVendorGurd } from './Shared/AuthVendorGurd';
 
 
 @NgModule({
@@ -96,7 +97,7 @@ import { ProfileComponent } from './profile/profile.component';
     BrowserAnimationsModule
   ],
   providers: [
-    AuthGurd,AuthAdminGurd,
+    AuthGurd,AuthAdminGurd,AuthVendorGurd,
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

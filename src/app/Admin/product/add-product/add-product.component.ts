@@ -51,9 +51,10 @@ export class AddProductComponent implements OnInit {
     this.productData.Photo=this.fileToUpload;
 
     this.productser.addProduct(this.productData).subscribe(data => {
-     
-this.router.navigate(['/admin/product']);
-
+    if (localStorage.getItem("role") == "Admin")
+      this.router.navigate(['/admin/product']);
+    else if (localStorage.getItem("role") == "Vendor")
+      this.router.navigate(['/homePage/profile']);
     
     }, error => {this.errors=error.error.error_description;console.log(error.error)});
   }

@@ -15,8 +15,7 @@ export class IndexProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.GetProducts().subscribe(data=>{
-this.products=data
-alert(data);
+      this.products=data
     });
   }
   deleteProduct(id:number){

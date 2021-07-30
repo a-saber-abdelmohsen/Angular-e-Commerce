@@ -16,7 +16,7 @@ export class ProductListComponent implements OnInit {
 
   products: Product[] = [];
   brands: Brand[] = [];
-  
+  pageNumber = 1;
   Subid=0;
 
   constructor(
@@ -57,6 +57,14 @@ export class ProductListComponent implements OnInit {
     this._brandService.GetAllBrand().subscribe(d => this.brands = d);
   }
 
+  SeeMore(){
+    if (this.products.length - (4*this.pageNumber) > 0){
+      this.pageNumber++;
+    }
+  }
   
+  MaxNumber(i: number): boolean{
+    return i < (this.pageNumber * 4);
+  }
 
 }

@@ -1,6 +1,5 @@
-
-  <h2>Add New Subcategory</h2>
-  <div class="container">
+<div class="container">
+    <h2>Add New Subcategory</h2>
       <form #userPost="ngForm" novalidate (ngSubmit)="onSubmit(userPost.value)" enctype='multipart/form-data' >
      
   
@@ -14,7 +13,7 @@
     
           <div class="form-group">
             <label for="Cat_Id">Main Subcategory Name :</label><br>
-            <select name="Cat_Id" [(ngModel)]="subcategory.Cat_Id" id="Cat_Id" #Cat_Id="ngModel" [class.is-invalid]="Cat_Id.invalid && Cat_Id.touched" width="50%" required>
+            <select name="Cat_Id" class="form-control" [(ngModel)]="subcategory.Cat_Id" id="Cat_Id" #Cat_Id="ngModel" [class.is-invalid]="Cat_Id.invalid && Cat_Id.touched" required>
                     <option *ngFor="let main of maincategories" value="{{main.Id}}">{{main.Name}}</option>
             </select>
             <div *ngIf="Cat_Id.touched && Cat_Id.invalid">
@@ -25,7 +24,7 @@
      
         <div class="form-group">
             <label for="Parent_Id">Parent Subcategory Name :</label><br>
-            <select name="Parent_Id" [(ngModel)]="subcategory.Parent_Id" Id="Parent_Id" #Parent_Id="ngModel" [class.is-invalid]="Parent_Id.invalid && Parent_Id.touched" width="50%" required>
+            <select name="Parent_Id" class="form-control" [(ngModel)]="subcategory.Parent_Id" Id="Parent_Id" #Parent_Id="ngModel" [class.is-invalid]="Parent_Id.invalid && Parent_Id.touched" required>
                 <option value="0">Basic Sub Category</option>
                 <option *ngFor="let sub of subcategories" value="{{sub.Id}}">{{sub.Name}}</option>
             </select>
@@ -35,10 +34,10 @@
 
         </div>
         <div>
-            <img [src]="imageUrl" width="120px" height="120px">
+            <label for="Photo">Your Image</label>
         </div>
-       <div class="form-group">
-         <label for="Photo">Your Image</label>
+       <div class="form-group" id="imageContainer">
+        <img [src]="imageUrl" width="120px" height="120px">
          <input type="file" id="Photo" name="Photo"  (change)="fileHandle($event.target)" accept="image/png, image/jpeg" >
        </div>
           <br>

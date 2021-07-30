@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MainCategoryService } from 'src/app/Services/main-category.service';
 import { SubcategoryService } from 'src/app/Services/subcategory.service';
 import { Main_Category } from 'src/app/Shared/Main_Category';
@@ -11,7 +12,11 @@ import { SubCategory } from 'src/app/Shared/SubCategory';
 })
 export class AddSubcategoryComponent implements OnInit {
 
-  constructor(private _SubcategoryService:SubcategoryService,private _MaincategoryService:MainCategoryService) { }
+  constructor(
+    private _SubcategoryService:SubcategoryService,
+    private _MaincategoryService:MainCategoryService,
+    private _router: Router
+    ) { }
   subcategory:SubCategory =new SubCategory(0,"",0,"","","",null,0)
   subcategories:SubCategory[]=[];
   maincategories:Main_Category[]=[];
@@ -37,17 +42,16 @@ export class AddSubcategoryComponent implements OnInit {
   
   onSubmit(data:any)
   {
-    alert("submit");
     //this.subcategory.Photo=this.filestring;
     this.subcategory.imageFile=this.fileToUpload;
 
     this._SubcategoryService.addSubcategory(this.subcategory/*,this.fileToUpload*/).subscribe(data=>
       {
-        console.log(data)
+        this._router.navigate(['/admin/subcategory'])
       },error=>
-        {
-          console.log(error)
-        });
+      {
+        console.log(error)
+      });
   }
   fileHandle(file: any) 
   {

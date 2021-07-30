@@ -123,7 +123,7 @@
                   <a
                     class="btn btn-primary"
                     style="margin-bottom: 1rem"
-                    routerLink="homePage/product/add"
+                    routerLink="/homePage/product/add"
                     >Add New Product</a
                   >
 
@@ -134,6 +134,7 @@
                         <th>In Stock</th>
                         <th>Sold</th>
                         <th></th>
+                        <th></th>
                       </tr>
                     </thead>
 
@@ -143,6 +144,9 @@
                       <td>{{item.Sell_Count}}</td>
                       <td>
                         <a class="btn btn-primary" routerLink="/homePage/details/{{item.Id}}">Details</a>
+                      </td>
+                      <td>
+                        <a class="btn btn-success" routerLink="/homePage/product/edit/{{item.Id}}">Edit</a>
                       </td>
                     </tr>
                   </table>

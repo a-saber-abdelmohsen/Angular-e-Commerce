@@ -45,9 +45,7 @@ addProduct(_Product: Product):Observable<Product>
 {
   const headerss = {
     'Authorization': "Bearer "+localStorage.getItem('access_token'),
-    
-     
-    }
+  }
 
 
  

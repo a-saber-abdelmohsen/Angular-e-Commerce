@@ -14,7 +14,7 @@ export class WishlistService {
 
   constructor(private _htttpClint:HttpClient) { }
   GetWishListForThisUser(userid:string):Observable<WishList[]>{
-  return  this._htttpClint.get<WishList[]>("http://localhost:9602/api/WishList?userid="+userid);
+  return  this._htttpClint.get<WishList[]>("http://localhost:9602/api/WishList/GetWishList?userid="+userid);
 
   }
   CheckIfWishListExistForThisUserAndProduct(userid:string,productid:number):Observable<boolean>{

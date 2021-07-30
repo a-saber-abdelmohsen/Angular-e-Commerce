@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { MainCategoryService } from 'src/app/Services/main-category.service';
 import { SubcategoryService } from 'src/app/Services/subcategory.service';
 import { Main_Category } from 'src/app/Shared/Main_Category';
@@ -12,11 +12,16 @@ import { SubCategory } from 'src/app/Shared/SubCategory';
 })
 export class EditSubcategoryComponent implements OnInit {
 
-  constructor(private _SubcategoryService:SubcategoryService,private _MaincategoryService:MainCategoryService,private activatedRoute:ActivatedRoute) { }
+  constructor(
+    private _SubcategoryService:SubcategoryService,
+    private _MaincategoryService:MainCategoryService,
+    private activatedRoute:ActivatedRoute,
+    private _router: Router
+    ) { }
   subcategory:SubCategory
   subcategories:SubCategory[]=[];
   maincategories:Main_Category[]=[];
-  imageUrl: any = "./assets/images/def.png"
+  imageUrl: any = "http://localhost:9602/Content/Imgs/Sub_Categories/"
   fileToUpload!: File
   id:number
   ngOnInit(): void {
@@ -25,7 +30,8 @@ export class EditSubcategoryComponent implements OnInit {
     });
     this._SubcategoryService.getSubcategoryById(this.id).subscribe((data)=>
     {
-      this.subcategory=data
+      this.subcategory=data;
+      this.imageUrl += this.subcategory.Photo;
     });
     this._SubcategoryService.getAllSubcategories().subscribe((data)=>
     {
@@ -35,8 +41,6 @@ export class EditSubcategoryComponent implements OnInit {
     this._MaincategoryService.GetAllMain_cat().subscribe(data=>{
       this.maincategories=data
     });
-      //this._MaincategoryService.getAllMaincategories()
-    //this.maincategories=[new Main_Category(1,"phones",""),new Main_Category(2,"labs","")];
   }
   onSubmit(data:any)
   {
@@ -44,25 +48,20 @@ export class EditSubcategoryComponent implements OnInit {
     this.subcategory.imageFile=this.fileToUpload;
     this._SubcategoryService.editSubcategory(this.id,this.subcategory).subscribe(data=>
       {
-        console.log(data)
+        this._router.navigate(['/admin/subcategory'])
       },error=>
         {
           console.log(error)
         });
   }
-  fileHandle(file: any) 
-  {
+  fileHandle(file: any) {
     this.fileToUpload = file.files.item(0)
+
     var filereader = new FileReader();
-    /*filereader.onloadend = (e) => {
-      console.log(filereader.result);
-      this.filestring = filereader.result as string;
-   };*/
     filereader.onload = (event) => {
       this.imageUrl = event.target?.result;
-      console.log(this.imageUrl);
+
     }
     filereader.readAsDataURL(this.fileToUpload)
   }
-
 }

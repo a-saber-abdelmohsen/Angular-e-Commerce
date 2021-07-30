@@ -15,6 +15,8 @@ export class ProductComponent implements OnInit {
   result: any;
   ClassRed: boolean = false;
   userid=localStorage.getItem("userId");
+
+  @Input() hidden: boolean;
   //userid = '123';
   @Input() product!: Product;
   constructor(
@@ -30,7 +32,7 @@ export class ProductComponent implements OnInit {
       this._wishListService
         .CheckIfWishListExistForThisUserAndProduct(this.userid, this.product.Id)
         .subscribe((data) => {
-          this.flagAlreadyAdded = data;
+          //this.flagAlreadyAdded = data;
 
           if (data) {
             this.ClassRed = true;
@@ -64,6 +66,7 @@ export class ProductComponent implements OnInit {
           .subscribe((data) => {
             this.ClassRed = false;
             this._wishListService.changeMessage('');
+            alert("deleted")
           });
       } else {
         this._wishListService
@@ -72,6 +75,7 @@ export class ProductComponent implements OnInit {
             this.result = data;
             this.ClassRed = true;
             this._wishListService.changeMessage('');
+            alert("added")
           });
       }
     }
